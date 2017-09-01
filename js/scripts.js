@@ -26,9 +26,5 @@ $(document).ready(function () {
     // To enable Semantic Modules
     $('.ui.dropdown').dropdown();
     
-    $('#news').visibility({
-    transition : 'fade in',
-    duration   : 1000
-    });
 });
 

@@ -90,6 +90,9 @@
     #sidebar{
         display: initial;
     }
+    #mobile-menu .item{
+        display: none;
+    }
 }
 /*Phones*/
 @media (max-width: 765px) {
@@ -99,5 +102,8 @@
     #sidebar{
         display:none;
         background-color: black;
+    }
+    #mobile-menu .item{
+        display: inline-block;
     }
 }
