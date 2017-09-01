@@ -3,30 +3,27 @@
 #sidebar{
     background-color: rgba(0, 0, 0, 0.1);
     height: 100vh;
-
 }
+
 #sidebar .item{
+    color: white;
+}
+
+#mobile-menu{
+    z-index: 1;
+    position: fixed;
+    right: 0px;
+}
+
+#page-content{
     color: white;
 }
 
 #home{
     background-color: purple;
     height: 100vh;
-    color: white;
 }
 
-#mobile-menu{
-    background-color: transparent;
-}
-
-#mobile-menu .item{
-    position: absolute;
-    right: 0px;
-}
-
-#content{
-    color: white;
-}
 
 #news{
     background-color: blue;
@@ -47,7 +44,6 @@
     display:inline-block;
 }
 
-
 #about{
     background-color: purple;
     height: 50vh;
@@ -60,7 +56,6 @@
 
 #team{
     background-color: black;
-    height: 50vh;
 }
 
 #contact{
@@ -79,7 +74,7 @@
         padding-left: 215px;
     }
     #sidebar{
-        display: initial;
+        display: inline-block;
     }
 }
 /*Medium sized devices*/
@@ -88,9 +83,9 @@
         padding-left: 215px;
     }
     #sidebar{
-        display: initial;
+        display: inline-block;
     }
-    #mobile-menu .item{
+    #mobile-menu{
         display: none;
     }
 }
@@ -103,7 +98,7 @@
         display:none;
         background-color: black;
     }
-    #mobile-menu .item{
+    #mobile-menu{
         display: inline-block;
     }
 }
