@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    // mobile nav trigger
+    $('#mobile-menu .item').click(function (e) {
+        $('#sidebar').slideToggle(400);
+        e.preventDefault();
+    });
     // smooth scrolling
     $("a[href^='#']").on('click', function(e) {
        var hash = this.hash;
@@ -18,10 +23,10 @@ $(document).ready(function () {
       }
     });
     
+    // To enable Semantic Modules
     $('.ui.dropdown').dropdown();
     
-    $('#news')
-    .visibility({
+    $('#news').visibility({
     transition : 'fade in',
     duration   : 1000
     });
