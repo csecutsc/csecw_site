@@ -1,0 +1,93 @@
+/* PLEASE ME ME TEST SRRY FOR BACKGROUND COLOURS */
+
+#sidebar{
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 100vh;
+
+}
+#sidebar .item{
+    color: white;
+}
+
+#home{
+    background-color: purple;
+    height: 100vh;
+    color: white;
+}
+
+#content{
+    color: white;
+}
+
+#news{
+    background-color: blue;
+    height: 50vh;
+}
+
+#newscontainer{
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+#newscontainer .news{
+    width: 300px;
+    height: 100px;
+    background-color: silver;
+    white-space:nowrap;
+    display:inline-block;
+}
+
+
+#about{
+    background-color: purple;
+    height: 50vh;
+}
+
+#resources{
+    background-color: lightblue;
+    height: 50vh;
+}
+
+#team{
+    background-color: black;
+    height: 50vh;
+}
+
+#contact{
+    background-color: cadetblue;
+    height: 50vh;
+}
+
+#footer{
+    background-color: black;
+    text-align: center;
+}
+
+/*Large Devices*/
+@media screen and (min-width: 1150px) {
+    .pushed{
+        padding-left: 215px;
+    }
+    #sidebar{
+        display: initial;
+    }
+}
+/*Medium sized devices*/
+@media screen and (min-width: 766px) {
+    .pushed{
+        padding-left: 215px;
+    }
+    #sidebar{
+        display: initial;
+    }
+}
+/*Phones*/
+@media (max-width: 765px) {
+    .pushed{
+        padding-left: 0px;
+    }
+    #sidebar{
+        display:none;
+    }
+}
