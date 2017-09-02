@@ -74,7 +74,7 @@ $(document).ready(function () {
     $('#team').visibility({
         once       : true,
         continuous : false,
-        onBottomVisible  : function(calculations) {
+        onTopVisible  : function(calculations) {
         $('#team .cards').transition('fade up in', '3s');
         }
     });
@@ -82,7 +82,7 @@ $(document).ready(function () {
     $('#contact').visibility({
         once       : true,
         continuous : false,
-        onBottomVisible  : function(calculations) {
+        onTopVisible  : function(calculations) {
         $('#contact #map').transition('fade right in', '1.5s');
         }
     });
