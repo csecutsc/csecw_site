@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2403.1 1218" style="enable-background:new 0 0 2403.1 1218;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#4D4D4D;}
+	.st1{fill:#999999;}
+	.st2{fill:none;}
+	.st3{fill:#FFFFFF;}
+	.st4{font-family:'RobotoMono-Bold';}
+	.st5{font-size:300px;}
+	.st6{fill:none;stroke:#FFFFFF;stroke-width:59;stroke-miterlimit:10;}
+	.st7{font-family:'AHJAvalon-BookCond';}
+	.st8{font-size:27.8329px;}
+	.st9{font-family:'AHJAvalon-MediumCond';}
+	.st10{font-family:'AHJAvalon-BoldCond';}
+</style>
+<g id="Layer_4">
+	<polygon class="st0" points="2363.1,1218 1334.1,189 1268.1,220 1305.2,1218 	"/>
+	<polygon class="st1" points="1527.9,1218 1334.1,1028 495.6,1028 685.6,1218 	"/>
+</g>
+<g id="Layer_5">
+	<g>
+		<polygon class="st2" points="1434.4,540.5 1725,249.8 2403.1,927.9 2403.1,0 0.1,0 0.1,1218 2111.9,1218 		"/>
+		<polygon class="st1" points="1434.4,540.5 2111.9,1218 2403.1,1218 2403.1,927.9 1725,249.8 		"/>
+	</g>
+</g>
+<g id="Layer_1">
+	<g>
+		<rect x="496.1" y="190" width="838" height="838"/>
+		<path d="M1333.6,190.5v837h-837v-837H1333.6 M1334.6,189.5h-839v839h839V189.5L1334.6,189.5z"/>
+	</g>
+</g>
+<g id="Layer_3">
+	<g>
+		<g>
+			<path d="M1578.8,600L1578.8,600c-113.4,0-205.3-91.9-205.3-205.2V189.5h205.3c113.4,0,205.2,91.9,205.2,205.2v0
+				C1784.1,508.1,1692.2,600,1578.8,600z"/>
+		</g>
+		<text transform="matrix(1 0 0 1 1483.057 496)" class="st3 st4 st5">W</text>
+	</g>
+</g>
+<g id="Layer_2">
+	<g>
+		<polyline class="st6" points="885.6,557.6 655.6,557.6 655.6,382 885.6,382 		"/>
+		<polyline class="st6" points="1200.6,844 970.6,844 970.6,668.4 1200.6,668.4 		"/>
+		<g>
+			<polyline class="st6" points="885.6,844 655.6,844 655.6,756.2 655.6,668.4 885.6,668.4 			"/>
+			<line class="st6" x1="886.1" y1="756.6" x2="656.1" y2="756.6"/>
+		</g>
+		<g>
+			<polyline class="st6" points="1200.6,469.8 970.6,469.8 970.6,425.9 970.6,382 1200.6,382 			"/>
+		</g>
+		<g>
+			<polyline class="st6" points="941.6,469.8 1171.6,469.8 1171.6,513.7 1171.6,557.6 941.6,557.6 			"/>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 622.0565 964.7109)"><tspan x="0" y="0" class="st3 st7 st8">COMPUTER SCIENCE ENRICHMENT CLUB’S</tspan><tspan x="428.1" y="0" class="st3 st9 st8"> </tspan><tspan x="433.4" y="0" class="st3 st10 st8">WEB DIVISION</tspan></text>
+</g>
+</svg>

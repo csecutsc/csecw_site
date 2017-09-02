@@ -1,104 +1,195 @@
 /* PLEASE ME ME TEST SRRY FOR BACKGROUND COLOURS */
 
-#sidebar{
+#sidebar {
     background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 50px;
     height: 100vh;
 }
 
-#sidebar .item{
+#sidebar .item {
     color: white;
 }
 
-#mobile-menu{
+p {
+    font-family: 'Open Sans', sans-serif;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.purple-icon {
+    color: #1f2162;
+}
+
+.ui.secondary.vertical.pointing.menu .active.item {
+    border-color: white;
+}
+
+#mobile-menu {
     z-index: 1;
     position: fixed;
     right: 0px;
 }
 
-#page-content{
+#page-content {
     color: white;
 }
 
-#home{
-    background-color: purple;
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+}
+
+#home {
+    background: -webkit-linear-gradient(-90deg, red, yellow);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, red, yellow);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, red, yellow);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(45deg, #2E3192, #208EE1);
+    /* Standard syntax */
     height: 100vh;
 }
 
-
-#news{
-    background-color: blue;
-    height: 50vh;
+#splash-logo {
+    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
-#news-container{
+.news-item {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25rem;
+}
+
+.ui.card>.content>a.header {
+    color: white;
+}
+
+.ui.card>.content>a.header:hover {
+    color: white;
+}
+
+.ui.card>.content>.meta {
+    color: #585858;
+}
+
+.ui.card>.content>.description {
+    color: #A8A8A8;
+}
+
+#news {
+    padding: 3%;
+    background-color: #262626;
+}
+
+#news-container {
+    margin-top: 3%;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
 }
 
-#news-container .news{
+#news-container .news {
+    box-shadow: none;
     width: 300px;
     height: 100px;
-    background-color: silver;
-    white-space:nowrap;
-    display:inline-block;
+    background-color: #1C1C1C;
+    border: none;
+    margin: 0px 20px 50px 0px;
+    white-space: nowrap;
+    display: inline-block;
 }
 
-#about{
-    background-color: purple;
-    height: 50vh;
+#about {
+    padding: 3%;
+    background-color: #2E3192;
 }
 
-#resources{
+.blue-link {
+    color: #1BA4FF;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.blue-link:hover {
+    color: white;
+}
+
+#resources {
     background-color: lightblue;
     height: 50vh;
 }
 
-#team{
+#team {
     background-color: black;
 }
 
-#contact{
+#contact {
     background-color: cadetblue;
     height: 50vh;
 }
 
-#footer{
+#footer {
     background-color: black;
     text-align: center;
 }
 
+
 /*Large Devices*/
-@media screen and (min-width: 1150px) {
-    .pushed{
+
+@media all and (min-width: 1150px) {
+    .pushed {
         padding-left: 215px;
     }
-    #sidebar{
+    #sidebar {
         display: inline-block;
+    }
+    #splash-logo {
+        height: 80%;
     }
 }
+
+
 /*Medium sized devices*/
-@media screen and (min-width: 766px) {
-    .pushed{
+
+@media (max-width: 1149px) and (min-width: 766px) {
+    .pushed {
         padding-left: 215px;
     }
-    #sidebar{
+    #sidebar {
         display: inline-block;
     }
-    #mobile-menu{
+    #mobile-menu {
         display: none;
     }
+    #splash-logo {
+        height: 50%;
+    }
 }
+
+
 /*Phones*/
-@media (max-width: 765px) {
-    .pushed{
+
+@media (max-width: 765px) and (min-width: 0px) {
+    .pushed {
         padding-left: 0px;
     }
-    #sidebar{
-        display:none;
+    #sidebar {
+        display: none;
         background-color: black;
     }
-    #mobile-menu{
+    #mobile-menu {
         display: inline-block;
+    }
+    #splash-logo {
+        content: url(/images/splash_logo_no-shadow.png);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
     }
 }
