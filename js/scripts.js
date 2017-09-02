@@ -32,6 +32,8 @@ $(document).ready(function () {
     
     // To enable Semantic Modules
     $('.ui.dropdown').dropdown();
+    
+    // Animations
     $('#splash-logo').transition('fade in', '3s');
     
     
@@ -39,48 +41,49 @@ $(document).ready(function () {
         once       : true,
         continuous : false,
         onTopVisible  : function(calculations) {
-        $('#sidebar a').transition('slide down in', '2s');
+        $('#sidebar a').transition('fade down in', '2s');
         }
     });
     // animations for sections
     $('#news').visibility({
         once       : true,
         continuous : false,
-        onTopVisible  : function(calculations) {
-        $('#news .container').transition('fade right in', '1.5s');
-        $('#news .card').transition('fade in', '3s');
+        onBottomVisible : function(calculations) {
+        $('#news .card').transition('fade up in', '1.5s');
         }
     });
     
+    /*
     $('#about').visibility({
         once       : true,
         continuous : false,
-        onTopVisible  : function(calculations) {
+        onPassing  : function(calculations) {
         $('#about .container').transition('fade right in', '1.5s');
         }
     });
+    */
     
     $('#resources').visibility({
         once       : true,
         continuous : false,
-        onTopVisible  : function(calculations) {
-        $('#resources .container').transition('fade right in', '1.5s');
+        onBottomVisible  : function(calculations) {
+        $('#resources .button').transition('fade up in', '1.5s');
         }
     });
     
     $('#team').visibility({
         once       : true,
         continuous : false,
-        onTopVisible  : function(calculations) {
-        $('#team .cards').transition('fade up in', '2s');
+        onBottomVisible  : function(calculations) {
+        $('#team .cards').transition('fade up in', '3s');
         }
     });
     
     $('#contact').visibility({
         once       : true,
         continuous : false,
-        onTopVisible  : function(calculations) {
-        $('#contact .container').transition('fade right in', '1.5s');
+        onBottomVisible  : function(calculations) {
+        $('#contact #map').transition('fade right in', '1.5s');
         }
     });
     

@@ -66,7 +66,7 @@ p {
     /* For Firefox 3.6 to 15 */
     background: linear-gradient(45deg, #2E3192, #208EE1);
     /* Standard syntax */
-    height: 105vh;
+    height: 100vh;
 }
 
 #splash-logo {
@@ -122,6 +122,7 @@ p {
     margin: 0px 20px 50px 0px;
     white-space: nowrap;
     display: inline-block;
+    visibility: hidden;
 }
 
 #about {
@@ -177,6 +178,17 @@ p {
     text-align: center;
 }
 
+#resources .button{
+    visibility: hidden;
+}
+
+#map {
+    visibility: hidden;
+}
+
+#team .cards{
+    visibility: hidden;
+}
 
 /*Large Devices*/
 
@@ -267,4 +279,5 @@ p {
     .ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
         display: none;
     }
+    
 }
