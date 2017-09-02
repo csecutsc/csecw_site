@@ -230,4 +230,13 @@ p {
         width: 80vw;
         height: auto;
     }
+    .resource-buttons {
+        width: 100%;
+    }
+    p {
+        width: 100%;
+    }
+    .ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
+        display: none;
+    }
 }
