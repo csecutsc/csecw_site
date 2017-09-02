@@ -1,13 +1,7 @@
 $(document).ready(function () {
     // mobile nav trigger
     $('#mobile-menu').click(function (e) {
-        if ($('#sidebar').css('display') == 'none'){
-            $('.pushed').css("padding-left", "200px");
-        }
-        else {
-            $('.pushed').css("padding-left", "0px");
-        };
-        $('#sidebar').animate({width:'toggle'},250);
+        $('#sidebar').transition('fade right');
         e.preventDefault();
     });
 
@@ -21,8 +15,7 @@ $(document).ready(function () {
       // If an item is clicked on mobile then hide the sidebar menu
       if($('#mobile-menu').is(':visible'))
         {
-            $("#sidebar").toggle(200);
-            $('.pushed').css("padding-left", "0px");
+            $('#sidebar').transition('fade right');
         };
     });
     
@@ -31,7 +24,7 @@ $(document).ready(function () {
        var hash = this.hash;
        $('html, body').animate({
         scrollTop: $(hash).offset().top
-         }, 800, function(){
+         }, 700, function(){
            window.location.hash = hash;
          });
         e.preventDefault();
@@ -39,6 +32,57 @@ $(document).ready(function () {
     
     // To enable Semantic Modules
     $('.ui.dropdown').dropdown();
+    $('#splash-logo').transition('fade in', '3s');
+    
+    
+    $('#sidebar').visibility({
+        once       : true,
+        continuous : false,
+        onTopVisible  : function(calculations) {
+        $('#sidebar a').transition('slide down in', '2s');
+        }
+    });
+    // animations for sections
+    $('#news').visibility({
+        once       : true,
+        continuous : false,
+        onTopVisible  : function(calculations) {
+        $('#news .container').transition('fade right in', '1.5s');
+        $('#news .card').transition('fade in', '3s');
+        }
+    });
+    
+    $('#about').visibility({
+        once       : true,
+        continuous : false,
+        onTopVisible  : function(calculations) {
+        $('#about .container').transition('fade right in', '1.5s');
+        }
+    });
+    
+    $('#resources').visibility({
+        once       : true,
+        continuous : false,
+        onTopVisible  : function(calculations) {
+        $('#resources .container').transition('fade right in', '1.5s');
+        }
+    });
+    
+    $('#team').visibility({
+        once       : true,
+        continuous : false,
+        onTopVisible  : function(calculations) {
+        $('#team .container').transition('fade right in', '1.5s');
+        }
+    });
+    
+    $('#contact').visibility({
+        once       : true,
+        continuous : false,
+        onTopVisible  : function(calculations) {
+        $('#contact .container').transition('fade right in', '1.5s');
+        }
+    });
     
 });
 
