@@ -148,7 +148,7 @@ p {
         display: inline-block;
     }
     #splash-logo {
-        content: url(images/splash_logo.png);
+        content: url(../images/splash_logo.png);
         height: 80%;
     }
 }
@@ -167,7 +167,7 @@ p {
         display: none;
     }
     #splash-logo {
-        content: url(images/splash_logo.png);
+        content: url(../images/splash_logo.png);
         height: 50%;
     }
 }
@@ -187,7 +187,7 @@ p {
         display: inline-block;
     }
     #splash-logo {
-        content: url(images/splash_logo_no-shadow.png);
+        content: url(../images/splash_logo_no-shadow.png);
         position: absolute;
         top: 50%;
         left: 50%;
