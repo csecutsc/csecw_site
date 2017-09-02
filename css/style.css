@@ -57,7 +57,9 @@ p {
     position: absolute;
     right: 0;
     bottom: 0;
-    height: 80%;
+    width: 80%;
+    max-width: 1400px;
+    height: auto;
 }
 
 .news-item {
@@ -151,10 +153,6 @@ p {
     #sidebar {
         display: inline-block;
     }
-    #splash-logo {
-        content: url(../images/splash_logo.png);
-        height: 80%;
-    }
 }
 
 
@@ -169,10 +167,6 @@ p {
     }
     #mobile-menu {
         display: none;
-    }
-    #splash-logo {
-        content: url(../images/splash_logo.png);
-        height: 60%;
     }
 }
 
