@@ -14,7 +14,23 @@
 p {
     font-family: 'Open Sans', sans-serif;
     width: 70%;
-    margin-bottom: 20px;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+#map {
+    height: 300px;
+}
+
+.ui.list .list>.item a,
+.ui.list>.item a {
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    color: #777adb;
+}
+
+.ui.list .list>.item a:hover,
+.ui.list>.item a:hover {
+    color: white;
 }
 
 .purple-icon {
@@ -122,17 +138,35 @@ p {
 }
 
 #resources {
-    background-color: lightblue;
-    height: 50vh;
+    padding: 3%;
+    background-color: #1BA4FF;
+}
+
+.resource-buttons {
+    width: 70%;
+}
+
+.ui.grid {
+    margin-top: 2%;
+}
+
+.ui.card,
+.ui.cards>.card {
+    box-shadow: none;
 }
 
 #team {
-    background-color: black;
+    padding: 3%;
+    background-color: #262626;
+}
+
+.team-members {
+    padding-top: 2%;
 }
 
 #contact {
-    background-color: cadetblue;
-    height: 50vh;
+    padding: 3%;
+    background-color: #2E3192;
 }
 
 #footer {
