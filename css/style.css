@@ -170,7 +170,8 @@ p {
 }
 
 #footer {
-    background-color: #262626;
+    background-color: #1d1f6a;
+    font-family: 'Open Sans', sans-serif;
     padding: 1%;
     text-align: center;
 }
