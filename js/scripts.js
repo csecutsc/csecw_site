@@ -72,7 +72,7 @@ $(document).ready(function () {
         once       : true,
         continuous : false,
         onTopVisible  : function(calculations) {
-        $('#team .container').transition('fade right in', '1.5s');
+        $('#team .cards').transition('fade up in', '2s');
         }
     });
     

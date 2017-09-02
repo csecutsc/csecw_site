@@ -195,7 +195,7 @@ p {
 
 /*Medium sized devices*/
 
-@media (max-width: 1399px) and (min-width: 1125px) {
+@media (max-width: 1399px) and (min-width: 1024px) {
     .pushed {
         padding-left: 215px;
     }
@@ -207,10 +207,38 @@ p {
     }
 }
 
+/*Tablets*/
+@media (max-width: 1024px) and (min-width: 768px) {
+    .pushed {
+        padding-left: 0px;
+    }
+    #sidebar {
+        display: none;
+        background-color: black;
+    }
+    #mobile-menu {
+        display: inline-block;
+    }
+    #splash-logo {
+        content: url(../images/splash_logo_no-shadow.png);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height: auto;
+    }
+    .resource-buttons {
+        width: 100%;
+    }
+    p {
+        width: 100%;
+    }
+}
 
 /*Phones*/
 
-@media (max-width: 1124px) and (min-width: 0px) {
+@media (max-width: 768px) and (min-width: 0px) {
     .pushed {
         padding-left: 0px;
     }
