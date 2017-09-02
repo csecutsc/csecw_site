@@ -185,7 +185,7 @@ p {
         display: inline-block;
     }
     #splash-logo {
-        content: url(/images/splash_logo_no-shadow.png);
+        content: url(images/splash_logo_no-shadow.png);
         position: absolute;
         top: 50%;
         left: 50%;
