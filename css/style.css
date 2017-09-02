@@ -57,6 +57,7 @@ p {
     position: absolute;
     right: 0;
     bottom: 0;
+    height: 80%;
 }
 
 .news-item {
@@ -193,5 +194,6 @@ p {
         left: 50%;
         transform: translate(-50%, -50%);
         width: 80vw;
+        height: auto;
     }
 }
