@@ -167,6 +167,15 @@ p {
     padding-top: 2%;
 }
 
+.ui.card>.extra a:not(.ui), .ui.cards>.card>.extra a:not(.ui) {
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    color: rgba(0,0,0,.4);
+}
+
+.ui.card>.extra a:not(.ui):hover, .ui.cards>.card>.extra a:not(.ui):hover {
+    color: rgba(0,0,0,.8);
+}
+
 #contact {
     padding: 3%;
     background-color: #2E3192;
