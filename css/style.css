@@ -87,10 +87,11 @@ p {
 
 .ui.card>.content>a.header {
     color: white;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
 .ui.card>.content>a.header:hover {
-    color: white;
+    color: #a7a7a7;
 }
 
 .ui.card>.content>.meta {
