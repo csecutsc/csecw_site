@@ -79,6 +79,7 @@ $(document).ready(function () {
         }
     });
     
+    /*
     $('#contact').visibility({
         once       : true,
         continuous : false,
@@ -86,6 +87,7 @@ $(document).ready(function () {
         $('#contact #map').transition('fade right in', '1.5s');
         }
     });
+    */
     
 });
 
