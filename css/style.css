@@ -136,6 +136,10 @@ p {
     background-color: #2E3192;
 }
 
+#about-subsection{
+    width:70%;
+}
+
 .blue-link {
     color: #1BA4FF;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
@@ -231,6 +235,9 @@ p {
     #sidebar {
         display: inline-block;
     }
+    #about-subsection{
+        width: 70%;
+    }
 }
 
 
@@ -246,6 +253,10 @@ p {
     #mobile-menu {
         display: none;
     }
+    #about-subsection{
+        width: 70%;
+    }
+
 }
 
 /*Tablets*/
@@ -268,6 +279,9 @@ p {
         transform: translate(-50%, -50%);
         width: 80vw;
         height: auto;
+    }
+    #about-subsection{
+        width: 100%;
     }
     .resource-buttons {
         width: 100%;
@@ -298,6 +312,9 @@ p {
         transform: translate(-50%, -50%);
         width: 80vw;
         height: auto;
+    }
+    #about-subsection{
+        width: 100%;
     }
     .resource-buttons {
         width: 100%;
