@@ -1,0 +1,29 @@
+Simple Guide to using Git
+
+Prerequisites:
+Windows: git: https://git-scm.com/downloads/win
+
+macOS & Linux distros: none
+	unless distro doesn’t have linux installed yet download git: 
+	https://git-scm.com/downloads
+————————————————————————————————————————————————————————————————————————
+Open up CMD or Terminal and add your username and email to your machine:
+
+> git config --global user.name “your-git-username”
+> git config --global user.email "email@example.com"
+
+This makes sure every commit you make is linked to your GitHub account
+
+Cloning and pulling from repos
+> git clone https://repo-link - This allows you to clone your repo from GitHub
+> git pull - This allows you to any changes you made on GitHub
+
+Committing / Adding changes to your repo
+> git add .
+> git commit -m “your message”
+> git push -u origin master
+* At this step the terminal or CMD might ask your for your git password
+Once everything is committed, you can view it on GitHub.
+
+Once it’s pushed you can view it on GitHub
+
