@@ -223,6 +223,10 @@ p {
     visibility: hidden;
 }
 
+#about-subsection .items{
+    visibility: hidden;
+}
+
 /*Large Devices*/
 
 @media all and (min-width: 1399px) {
