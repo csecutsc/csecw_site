@@ -116,7 +116,7 @@ p {
 
 #news-container .news {
     box-shadow: none;
-    width: 300px;
+    width: 350px;
     height: 100px;
     background-color: #1C1C1C;
     border: none;
@@ -165,10 +165,6 @@ p {
 
 .team-members {
     padding-top: 2%;
-}
-
-.ui.card .content img, .ui.cards>.card .content img {
-    display: none;
 }
 
 .ui.card>.extra a:not(.ui), .ui.cards>.card>.extra a:not(.ui) {
@@ -289,7 +285,5 @@ p {
     .ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
         display: none;
     }
-    .ui.card .content img, .ui.cards>.card .content img {
-        display: unset;
-    }
+
 }

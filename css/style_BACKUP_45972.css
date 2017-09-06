@@ -116,7 +116,7 @@ p {
 
 #news-container .news {
     box-shadow: none;
-    width: 300px;
+    width: 350px;
     height: 100px;
     background-color: #1C1C1C;
     border: none;
@@ -289,7 +289,12 @@ p {
     .ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
         display: none;
     }
+<<<<<<< HEAD
+
+}
+=======
     .ui.card .content img, .ui.cards>.card .content img {
         display: unset;
     }
 }
+>>>>>>> b5455a85188d0e9f41f9608d8f6b9cc7fc9a60a5

@@ -167,10 +167,6 @@ p {
     padding-top: 2%;
 }
 
-.ui.card .content img, .ui.cards>.card .content img {
-    display: none;
-}
-
 .ui.card>.extra a:not(.ui), .ui.cards>.card>.extra a:not(.ui) {
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     color: rgba(0,0,0,.4);
@@ -202,7 +198,7 @@ p {
 
 /*Large Devices*/
 
-@media all and (min-width: 1399px) {
+@media all and (min-width: 1400px) {
     .pushed {
         padding-left: 215px;
     }
@@ -217,7 +213,7 @@ p {
 
 /*Medium sized devices*/
 
-@media (max-width: 1399px) and (min-width: 1023px) {
+@media (max-width: 1399px) and (min-width: 1024px) {
     .pushed {
         padding-left: 215px;
     }
@@ -230,7 +226,7 @@ p {
 }
 
 /*Tablets*/
-@media (max-width: 1023px) and (min-width: 767px) {
+@media (max-width: 1024px) and (min-width: 768px) {
     .pushed {
         padding-left: 0px;
     }
@@ -260,7 +256,7 @@ p {
 
 /*Phones*/
 
-@media (max-width: 767px) and (min-width: 0px) {
+@media (max-width: 768px) and (min-width: 0px) {
     .pushed {
         padding-left: 0px;
     }
@@ -289,7 +285,5 @@ p {
     .ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
         display: none;
     }
-    .ui.card .content img, .ui.cards>.card .content img {
-        display: unset;
-    }
+    
 }
