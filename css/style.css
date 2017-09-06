@@ -25,6 +25,7 @@ p {
 .ui.list>.item a {
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     color: #777adb;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .ui.list .list>.item a:hover,
@@ -44,6 +45,7 @@ p {
     z-index: 1;
     position: fixed;
     right: 0px;
+    font-family: 'Open Sans', sans-serif;
     background-color:black;
     color: white;
     margin-top: 5px;
@@ -88,6 +90,7 @@ p {
 
 .ui.card>.content>a.header {
     color: white;
+    font-family: 'Open Sans', sans-serif;
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
@@ -97,10 +100,12 @@ p {
 
 .ui.card>.content>.meta {
     color: #585858;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .ui.card>.content>.description {
     color: #A8A8A8;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #news {
@@ -117,8 +122,7 @@ p {
 
 #news-container .news {
     box-shadow: none;
-    width: 300px;
-    height: 100px;
+    width: 325px;
     background-color: #1C1C1C;
     border: none;
     margin: 0px 20px 50px 0px;
@@ -147,21 +151,34 @@ p {
 }
 
 .resource-buttons {
-    width: 70%;
+    width: 100%;
 }
 
-.ui.grid {
-    margin-top: 2%;
+.resource-title {
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 30px;
 }
 
-.ui.card,
-.ui.cards>.card {
-    box-shadow: none;
+.date {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 30px;
 }
 
 #team {
     padding: 3%;
     background-color: #262626;
+}
+
+.ui.card,
+.ui.cards>.card {
+    box-shadow: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui) {
+    font-family: 'Open Sans', sans-serif;
 }
 
 .team-members {
@@ -183,6 +200,7 @@ p {
 
 #contact {
     padding: 3%;
+    font-family: 'Open Sans', sans-serif;
     background-color: #2E3192;
 }
 
