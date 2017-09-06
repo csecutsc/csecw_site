@@ -61,7 +61,7 @@ $(document).ready(function () {
     $('#about').visibility({
         once       : true,
         continuous : false,
-        onTopVisible  : function(calculations) {
+        onBottomVisible  : function(calculations) {
         $('#about-subsection .item').transition('fade up in', '1.5s');
         }
     });
