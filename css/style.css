@@ -17,6 +17,10 @@ p {
     margin-top: 3%;
 }
 
+.modal-body {
+    width: 100%;
+}
+
 #map {
     height: 300px;
 }
