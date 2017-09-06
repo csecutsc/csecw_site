@@ -69,7 +69,7 @@ $(document).ready(function () {
     $('#resources').visibility({
         once       : true,
         continuous : false,
-        onBottomVisible  : function(calculations) {
+        onTopVisible  : function(calculations) {
         $('#resources .button').transition('fade up in', '1.5s');
         $('#resources .button').css('visibility', 'visible')
         }

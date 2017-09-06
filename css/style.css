@@ -117,6 +117,11 @@ p {
     background-color: #262626;
 }
 
+#news-icon {
+  position: absolute;
+  right: 3%;
+}
+
 #news-container {
     margin-top: 3%;
     overflow-y: hidden;
