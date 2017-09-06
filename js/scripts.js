@@ -19,6 +19,11 @@ $(document).ready(function () {
         };
     });
 
+    $('#modal-1-trigger').click(function (e) {
+        $('#modal-1').modal('show');
+        e.preventDefault();
+    });
+
     // smooth scrolling
     $("a[href^='#']").on('click', function(e) {
        var hash = this.hash;
@@ -30,12 +35,12 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    // To enable Semantic Modules
-    $('.ui.dropdown').dropdown();
-
     // Animations
     $('#splash-logo').transition('fade in', '3s');
 
+    $('.ui.dropdown').dropdown({
+      transition: 'slide down'
+    });
 
     $('#sidebar').visibility({
         once       : true,
@@ -53,15 +58,13 @@ $(document).ready(function () {
         }
     });
 
-    /*
     $('#about').visibility({
         once       : true,
         continuous : false,
-        onPassing  : function(calculations) {
-        $('#about .container').transition('fade right in', '1.5s');
+        onBottomVisible  : function(calculations) {
+        $('#about-subsection .item').transition('fade up in', '1.5s');
         }
     });
-    */
 
     $('#resources').visibility({
         once       : true,
@@ -79,15 +82,5 @@ $(document).ready(function () {
         $('#team .cards').transition('fade up in', '3s');
         }
     });
-
-    /*
-    $('#contact').visibility({
-        once       : true,
-        continuous : false,
-        onTopVisible  : function(calculations) {
-        $('#contact #map').transition('fade right in', '1.5s');
-        }
-    });
-    */
 
 });
