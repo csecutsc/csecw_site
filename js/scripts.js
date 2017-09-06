@@ -13,12 +13,12 @@ $(document).ready(function () {
             .removeClass('active');
       };
       // If an item is clicked on mobile then hide the sidebar menu
-      if($('#mobile-menu').is(':visible'))
-        {
+        if($('#mobile-menu').is(':visible')) {
             $('#sidebar').transition('fade right');
-        };
+      };
     });
 
+    // if the card is clicked, it triggers the modal
     $('#modal-1-trigger').click(function (e) {
         $('#modal-1').modal('show');
         e.preventDefault();
@@ -61,7 +61,7 @@ $(document).ready(function () {
     $('#about').visibility({
         once       : true,
         continuous : false,
-        onBottomVisible  : function(calculations) {
+        onTopVisible  : function(calculations) {
         $('#about-subsection .item').transition('fade up in', '1.5s');
         }
     });
@@ -82,5 +82,4 @@ $(document).ready(function () {
         $('#team .cards').transition('fade up in', '3s');
         }
     });
-
 });
