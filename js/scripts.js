@@ -18,7 +18,7 @@ $(document).ready(function () {
             $('#sidebar').transition('fade right');
         };
     });
-    
+
     // smooth scrolling
     $("a[href^='#']").on('click', function(e) {
        var hash = this.hash;
@@ -29,14 +29,14 @@ $(document).ready(function () {
          });
         e.preventDefault();
     });
-    
+
     // To enable Semantic Modules
     $('.ui.dropdown').dropdown();
-    
+
     // Animations
     $('#splash-logo').transition('fade in', '3s');
-    
-    
+
+
     $('#sidebar').visibility({
         once       : true,
         continuous : false,
@@ -52,7 +52,7 @@ $(document).ready(function () {
         $('#news .card').transition('fade up in', '1.5s');
         }
     });
-    
+
     /*
     $('#about').visibility({
         once       : true,
@@ -62,15 +62,16 @@ $(document).ready(function () {
         }
     });
     */
-    
+
     $('#resources').visibility({
         once       : true,
         continuous : false,
         onBottomVisible  : function(calculations) {
         $('#resources .button').transition('fade up in', '1.5s');
+        $('#resources .button').css('visibility', 'visible')
         }
     });
-    
+
     $('#team').visibility({
         once       : true,
         continuous : false,
@@ -78,7 +79,7 @@ $(document).ready(function () {
         $('#team .cards').transition('fade up in', '3s');
         }
     });
-    
+
     /*
     $('#contact').visibility({
         once       : true,
@@ -88,6 +89,5 @@ $(document).ready(function () {
         }
     });
     */
-    
-});
 
+});
