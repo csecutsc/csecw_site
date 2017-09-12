@@ -10,27 +10,42 @@
     <meta name="author" content="CSEC Web Division">
     <meta name="theme-color" content="#262626">
     <title>CSEC-W</title>
-    <link rel="icon" sizes="192x192" href="images/icon.png">
+    <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='images/icon.png') }}">
 
     <!-- Latest JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <!-- Import Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:800|Roboto:700,900" rel="stylesheet">
+
     <!-- Semantic-UI -->
-    <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
-    <script src="semantic/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='semantic/semantic.min.css') }}">
+    <script src="{{ url_for('static', filename='semantic/semantic.min.js') }}"></script>
+
     <!-- Custom Stylesheet and js -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </head>
 
 <body>
+    <!-- Sidebar Navigation -->
     <div class="ui left fixed secondary vertical pointing menu" id="sidebar">
-        <a class="item" href="#home"> <img class="ui image" src="images/logo_horizontal.png"> </a> <a class="item" href="#news">News</a> <a class="item" href="#about">About Us</a> <a class="item" href="#resources">Resources</a> <a class="item" href="#team">Team</a> <a class="item" href="#contact">Contact</a> </div>
+        <a class="item" href="#home">
+            <img class="ui image" src="{{ url_for('static', filename='images/logo_horizontal.png') }}">
+        </a>
+        <a class="item" href="#news">News</a>
+        <a class="item" href="#about">About Us</a>
+        <a class="item" href="#resources">Resources</a>
+        <a class="item" href="#team">Team</a>
+        <a class="item" href="#contact">Contact</a>
+    </div>
+
     <div class="ui black button" href="#" id="mobile-menu">Menu<i class="right sidebar icon"></i></div>
+
     <div id="page-content">
         <!-- Home Section -->
-        <div id="home"> <img id="splash-logo" src="images/splash_logo.png"></div>
+        <div id="home"> <img id="splash-logo" src="{{ url_for('static', filename='images/splash_logo.png') }}"></div>
+
         <!-- News Section -->
         <div id="news">
             <div class="ui fluid container pushed">
@@ -52,7 +67,7 @@
                         <i class="circular inverted close icon"></i>
                         <div class="image content">
                             <div class="ui medium image">
-                                <img src="images/meeting-place.jpg">
+                                <img src="{{ url_for('static', filename='images/meeting-place.jpg') }}">
                             </div>
                             <div class="description">
                                 <div class="ui header">Clubs Fair - September 12, 2017</div>
@@ -73,6 +88,7 @@
                 </div>
             </div>
         </div>
+
         <!-- About Section -->
         <div id="about">
             <div class="ui fluid container pushed">
@@ -119,6 +135,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Resources Section -->
         <div id="resources">
             <!-- Icons for later
@@ -151,9 +168,9 @@
                             <div class="resource-title"> Lecture 1</div>
                             <div class="date">September 26, 2017</div> <i class="chevron circle down icon"></i>
                             <div class="menu">
-                                <a class="item" href="resources/filewanted" target="_blank"><i class="file powerpoint outline icon"></i> Lecture Slides</a>
-                                <a class="item" href="resources/recommended/csec-w-hosting.pdf" target="_blank"><i class="file pdf outline icon"></i> Hosting your website on Github</a>
-                                <a class="item" href="resources/recommended/git-guide.txt" target="_blank"><i class="file text outline icon"></i>Simple guide to git</a>
+                                <a class="item" href="{{ url_for('static', filename='resources/filewanted') }}" target="_blank"><i class="file powerpoint outline icon"></i> Lecture Slides</a>
+                                <a class="item" href="{{ url_for('static', filename='resources/recommended/csec-w-hosting.pdf') }}" target="_blank"><i class="file pdf outline icon"></i> Hosting your website on Github</a>
+                                <a class="item" href="{{ url_for('static', filename='resources/recommended/git-guide.txt') }}" target="_blank"><i class="file text outline icon"></i>Simple guide to git</a>
                             </div>
                         </div>
                       </div>
@@ -191,15 +208,16 @@
                 </div>
             </div>
         </div>
+
         <!-- Team Section -->
         <div id="team">
             <div class="ui fluid container pushed">
                 <h1 class="section-title">TEAM</h1>
                 <div class="ui five stackable cards team-members">
                     <div class="card">
-                        <div class="image"> <img src="images/kohilan.jpg"> </div>
+                        <div class="image"> <img src="{{ url_for('static', filename='images/kohilan.jpg') }}"> </div>
                         <div class="content">
-                            <img class="right floated circular mini ui image" src="images/kohilan-small.jpg">
+                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/kohilan-small.jpg') }}">
                             <div class="header">Kohilan Mohanarajan</div>
                             <div class="meta"> <span class="position-title">Division Leader</span> </div>
                         </div>
@@ -207,9 +225,9 @@
                             <a target="_blank" href="http://kohilanm.com/"> <i class="browser icon"></i> Website</a> <span class="right floated"><a target="_blank" href="mailto:kohilan.mohanarajan@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
                     </div>
                     <div class="card">
-                        <div class="image"> <img src="images/chintan.jpg"> </div>
+                        <div class="image"> <img src="{{ url_for('static', filename='images/chintan.jpg') }}"> </div>
                         <div class="content">
-                            <img class="right floated circular mini ui image" src="images/chintan-small.jpg">
+                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/chintan-small.jpg') }}">
                             <div class="header">Chintan Shah</div>
                             <div class="meta"> <span class="position-title">Lecturer</span> </div>
                         </div>
@@ -217,9 +235,9 @@
                             <a target="_blank" href="https://github.com/chintans1/"> <i class="github icon"></i> GitHub </a> <span class="right floated"><a target="_blank" href="mailto:chintans.shah@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
                     </div>
                     <div class="card">
-                        <div class="image"> <img src="images/harsh.jpg"> </div>
+                        <div class="image"> <img src="{{ url_for('static', filename='images/harsh.jpg') }}"> </div>
                         <div class="content">
-                            <img class="right floated circular mini ui image" src="images/harsh-small.jpg">
+                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/harsh-small.jpg') }}">
                             <div class="header">Harsh Patel</div>
                             <div class="meta"> <span class="position-title">Lecturer </span> </div>
                             <div class="meta">Status: Work Term</div>
@@ -228,9 +246,9 @@
                             <a target="_blank" href="https://github.com/harsh6646/"> <i class="github icon"></i> GitHub </a> <span class="right floated"><a target="_blank" href="mailto:harshone.patel@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
                     </div>
                     <div class="card">
-                        <div class="image"> <img src="images/abhay.jpg"> </div>
+                        <div class="image"> <img src="{{ url_for('static', filename='images/abhay.jpg') }}"> </div>
                         <div class="content">
-                            <img class="right floated circular mini ui image" src="images/abhay-small.jpg">
+                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/abhay-small.jpg') }}">
                             <div class="header">Abhay Vaidya</div>
                             <div class="meta"> <span class="position-title">Sessional Lecturer &amp; Designer</span> </div>
                         </div>
@@ -238,9 +256,9 @@
                             <a target="_blank" href="http://abhayvaidya.com/"> <i class="browser icon"></i> Website </a> <span class="right floated"><a target="_blank" href="mailto:abhay.vaidya@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
                     </div>
                     <div class="card">
-                        <div class="image"> <img src="images/kevin.jpg"> </div>
+                        <div class="image"> <img src="{{ url_for('static', filename='images/kevin.jpg') }}"> </div>
                         <div class="content">
-                            <img class="right floated circular mini ui image" src="images/kevin-small.jpg">
+                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/kevin-small.jpg') }}">
                             <div class="header">Kevin Shen</div>
                             <div class="meta"> <span class="position-title">Operations &amp; Sys. Admin</span> </div>
                         </div>
@@ -250,6 +268,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Contact Section -->
         <div id="contact">
             <div class="ui fluid container pushed">
@@ -480,6 +499,7 @@
             </script>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5raoTaTtayx0Ku35S7Sk3n5II7nk0N8A&callback=initMap" async defer></script>
         </div>
+
         <!-- Footer Section -->
         <div id="footer">
             <div class="ui fluid container"> &#169; CSEC-W 2017. All Rights Reserved </div>
