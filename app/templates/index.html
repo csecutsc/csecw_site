@@ -25,6 +25,9 @@
     <!-- Custom Stylesheet and js -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+    <!-- MomentJS -->
+    <script src="{{ url_for('static', filename='js/moment.min.js') }}"></script>
 </head>
 
 <body>
@@ -143,6 +146,7 @@
             <i class="file pdf outline icon"></i>
             <i class="file text outline icon"></i>
             -->
+            <!-- TODO: add recommended resources -->
             <div class="ui fluid container pushed">
                 <div class="ui two column stackable grid">
                     <div class="column left floated left aligned">
@@ -162,50 +166,18 @@
                     </div>
                 </div>
 
+                {% for lecture in lectures %}
                 <div class="ui four column doubling stackable grid resource-buttons">
-                      <div class="column">
+                    <div class="column">
                         <div class="ui big fluid dropdown right labeled icon button blue">
-                            <div class="resource-title"> Lecture 1</div>
-                            <div class="date">September 26, 2017</div> <i class="chevron circle down icon"></i>
+                            <div class="resource-title"> {{ lecture.title }}</div>
+                            <div class="date">{{ lecture.date }}</div> <i class="chevron circle down icon"></i>
                             <div class="menu">
-                                <a class="item" href="{{ url_for('static', filename='resources/filewanted') }}" target="_blank"><i class="file powerpoint outline icon"></i> Lecture Slides</a>
-                                <a class="item" href="{{ url_for('static', filename='resources/recommended/csec-w-hosting.pdf') }}" target="_blank"><i class="file pdf outline icon"></i> Hosting your website on Github</a>
-                                <a class="item" href="{{ url_for('static', filename='resources/recommended/git-guide.txt') }}" target="_blank"><i class="file text outline icon"></i>Simple guide to git</a>
                             </div>
                         </div>
-                      </div>
-                      <!--
-                      <div class="column">
-                        <div class="ui disabled big fluid dropdown right labeled icon button blue">
-                            <div class="resource-title"> Lecture 2</div>
-                            <div class="date">&nbsp;</div> <i class="chevron circle down icon"></i>
-                            <div class="menu">
-                                <div class="item" href="resources/filewanted" target="_blank">Lecture Slides</div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="ui disabled big fluid dropdown right labeled icon button blue">
-                            <div class="resource-title"> Lecture 3</div>
-                            <div class="date">&nbsp;</div> <i class="chevron circle down icon"></i>
-                            <div class="menu">
-                                <div class="item" href="resources/filewanted" target="_blank">Lecture Slides</div>
-                                <div class="item" href="resources/filewanted" target="_blank">Extra</div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="ui disabled big fluid dropdown right labeled icon button blue">
-                            <div class="resource-title"> Lecture 4</div>
-                            <div class="date">&nbsp;</div> <i class="chevron circle down icon"></i>
-                            <div class="menu">
-                                <div class="item" href="resources/filewanted" target="_blank">Lecture Slides</div>
-                                <div class="item" href="resources/filewanted" target="_blank">Extra</div>
-                            </div>
-                        </div>
-                      </div>
-                    -->
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
 
