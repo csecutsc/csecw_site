@@ -13,6 +13,13 @@ source flask/bin/activate
 pip install -r reqirements.txt
 ```
 
+## Set up the database
+Run the following the commands to initialize our database
+```
+python3 ./db_create.py
+python3 ./db_migrate.py
+```
+
 ## Run the app
 Make sure you are in the working directory and then do the following:
 ```
