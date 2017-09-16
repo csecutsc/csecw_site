@@ -33,7 +33,10 @@ class LectureMaterialForm(FlaskForm):
 
     # Get all choices
     choices = []
-    lectures = Lecture.query.all()
+    try:
+        lectures = Lecture.query.all()
+    except:
+        lectures = []
     for lecture in lectures:
         choices.append((str(lecture.id), lecture.title))
 
