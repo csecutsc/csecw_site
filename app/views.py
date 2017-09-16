@@ -107,7 +107,7 @@ def dashboard():
                            news_form=news_form, lecture_form=lecture_form)
 
 
-@app.route('/dashboard/news', methods=['GET', 'POST'])
+@app.route('/dashboard/news', methods=['POST'])
 @login_required
 def news():
     form = NewsForm()
