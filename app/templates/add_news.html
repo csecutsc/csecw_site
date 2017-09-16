@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Add News</h1>
+  <form action="" method="post" name="add_news" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+      Please enter the news title:<br>
+      {{ form.title(size=80) }}<br>
+      {% for error in form.title.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}<br>
+    </p>
+
+    <p>
+      Please enter the date:<br>
+      {{ form.date(class='datepicker') }}<br>
+      {% for error in form.date.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}<br>
+    </p>
+
+    <p>
+      Please enter the news summary:<br>
+      {{ form.summary(size=80) }}<br>
+      {% for error in form.summary.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}<br>
+    </p>
+
+    <p>
+      Please enter the news to show in modal (optional):<br>
+      {{ form.news }}<br>
+      {% for error in form.news.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}<br>
+    </p>
+
+    {{ form.image }}<br>
+    <p><input type="submit" value="Add News"></p>
+  </form>
+{% endblock %}

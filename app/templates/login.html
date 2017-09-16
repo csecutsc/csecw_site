@@ -1,24 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Login</h1>
-  <form action="" method="post" name="login">
-    {{ form.hidden_tag() }}
-    <p>
-      Please enter your email:<br>
-      {{ form.email(size=80) }}<br>
-      {% for error in form.email.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}<br>
-    </p>
+<div class="ui center aligned grid">
+  <div class="column">
+    <h2 class="ui blue header">
+      <div class="content">Log-in to your CSEC-W account</div>
+    </h2>
+    <form action="" class="ui large form" method="post">
+      {{ form.hidden_tag() }}
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            {{ form.email(placeholder="E-mail address") }}
+          </div>
+        </div>
 
-    <p>
-      Please enter your password:<br>
-      {{ form.password(size=80) }}<br>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            {{ form.password(placeholder="Password") }}
+          </div>
+        </div>
+
+        <input type="submit" class="ui fluid large blue submit button" value="Login" />
+      </div>
+
+      {% for error in form.email.errors %}
+        <div class="ui red message">{{ error }}</div>
+      {% endfor %}
+      
       {% for error in form.password.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-      {% endfor %}<br>
-    </p>
-    <p><input type="submit" value="Login"></p>
-  </form>
+        <div class="ui red message">{{ error }}</div>
+      {% endfor %}
+    </form>
+
+    <div class="ui message">
+      Are you a CSEC-W exec? <a href="/register">Register</a>
+    </div>
+  </div> 
+</div>
 {% endblock %}

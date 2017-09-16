@@ -18,12 +18,6 @@ $(document).ready(function () {
       };
     });
 
-    // if the card is clicked, it triggers the modal
-    $('#modal-1-trigger').click(function (e) {
-        $('#modal-1').modal('show');
-        e.preventDefault();
-    });
-
     // smooth scrolling
     $("a[href^='#']").on('click', function(e) {
        var hash = this.hash;

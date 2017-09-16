@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="ui container">
+  <script>
+    $(document).ready(function() {
+      // trigger modals
+      $('#add-lecture-modal-trigger').click(function(e) {
+        $('#add-lecture-modal').modal('show');
+        e.preventDefault();
+      });
+
+      $('#add-news-modal-trigger').click(function(e) {
+        $('#add-news-modal').modal('show');
+        e.preventDefault();
+      });
+    });
+  </script>
+
+  <div class="ui buttons">
+    <a id="add-lecture-modal-trigger" class="ui labeled icon button positive">
+      <i class="add icon"></i>
+      Lectures
+    </a>
+    <div class="or"></div>
+    <a id="add-news-modal-trigger" class="ui right labeled icon button positive">
+      <i class="add icon"></i>
+      News
+    </a>
+  </div>
+  <!-- Lectures -->
+  <div id="lectures">
+    <h1 class="ui horizontal divider header">  
+      <i class="sticky note outline icon"></i>
+      Lectures
+    </h1>
+    <div class="ui three cards">
+      {% for lecture in lectures %}
+      <script>
+          // if the card is clicked, it triggers the modal
+          $(document).ready(function() {
+            $('#modal-view-{{ lecture.id }}-trigger').click(function(e) {
+              $('#view-modal-{{ lecture.id }}').modal('show');
+              e.preventDefault();
+            });
+
+            $('#modal-delete-{{ lecture.id }}-trigger').click(function(e) {
+              $('#delete-modal-{{ lecture.id }}').modal('show');
+              e.preventDefault();
+            });
+
+            $('#lecture-{{ lecture.id }}-material-modal-trigger').click(function(e) {
+              $('#lecture-{{ lecture.id }}-material-modal').modal('show');
+              e.preventDefault();
+              load_dropdowns();
+            });
+          });
+      </script>
+      <div class="ui blue card">
+        <div class="content">
+          <div class="header">
+            {{ lecture.title }}
+          </div>
+          <div class="meta">
+            {{ moment(lecture.date).format('LL') }}
+          </div>
+        </div>
+        
+        <div class="extra content">
+          <div class="ui two buttons">
+            <a class="ui basic green button" id="modal-view-{{ lecture.id }}-trigger">View</a>
+            <a class="ui basic red button" id="modal-delete-{{ lecture.id }}-trigger">Delete</a>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="ui modal" id="view-modal-{{ lecture.id }}">
+          <div class="header">{{ lecture.title }}</div>
+          <div class="content">
+            <div class="description">
+              <div class="ui header">Lecture Material</div>
+              <table class="ui compact celled table">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for material in materials %}
+                    {% if material.lecture_id == lecture.id %}
+                      <tr>
+                        <td class="ui icon">
+                            <i class="{{ material.icon }}"></i><label></label>
+                        </td>
+                        <td>{{ material.description }}</td>
+                        <td><a href="{{ material.url }}">{{ material.url }}</a></td>
+                        <td class="circular ui negative icon button">
+                          <a class="negative" href="{{ url_for('delete_material', id=material.id) }}"><i class="delete icon"></i></a>
+                        </td>
+                      </tr>                  
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a id="lecture-{{ lecture.id }}-material-modal-trigger" class="ui positive right labeled icon button">
+              Add Lecture Material
+              <i class="add icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="ui small modal" id="delete-modal-{{ lecture.id }}">
+          <div class="header">{{ lecture.title }}</div>
+          <div class="content">
+            <p>Are you sure you want to delete {{ lecture.title }}?</p>
+          </div>
+
+          <div class="actions">
+            <div class="ui negative button">No</div>
+            <a href="{{ url_for('delete_lecture', id=lecture.id) }}" class="ui positive right labeled icon button">
+              Delete
+              <i class="checkmark icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="ui small modal" id="lecture-{{ lecture.id }}-material-modal">
+          <div class="header">Add new lecture material</div>
+          <div class="content">
+            <form class="ui" action="{{ url_for('material') }}" method="post">
+              {{ material_form.hidden_tag() }}
+              <div class="field">
+                <label>Description of the material</label>
+                <div class="ui fluid left icon input">
+                  <i class="write icon"></i>
+                  {{ material_form.description(placeholder="Description") }}
+                </div>
+              </div><br>
+              
+              <div class="field">
+                <label>Link to the material</label>
+                <div class="ui fluid left icon input">
+                  <i class="linkify icon"></i>
+                  {{ material_form.material(placeholder="Link to material") }}
+                </div>
+              </div><br>
+              
+              <div class="field">
+                <label>Lecture the material is for</label>
+                {{ material_form.lecture(id="lecture", class="ui fluid dropdown") }}
+              </div><br>
+              
+              <div class="field">
+                <label>Type of lecture material</label>
+                {{ material_form.material_type(id="material_type", class="ui fluid dropdown") }}
+              </div><br>
+              
+              <div class"ui buttons right aligned grid">
+                <input type="submit" class="ui right floated positive submit button" value="Add">
+              </div><br><br>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div><br><br>
+
+  <!-- News -->
+  <div>
+    <h1 class="ui horizontal divider header">
+      <i class="newspaper icon"></i>
+      News
+    </h1>
+    <div class="ui three cards">
+      {% for news in all_news %}
+      <script>
+          // if the card is clicked, it triggers the modal
+          $(document).ready(function() {
+            $('#news-modal-expand-{{ news.id }}-trigger').click(function(e) {
+              $('#news-expand-modal-{{ news.id }}').modal('show');
+              e.preventDefault();
+            });
+
+            $('#news-modal-delete-{{ news.id }}-trigger').click(function(e) {
+              $('#news-delete-modal-{{ news.id }}').modal('show');
+              e.preventDefault();
+            });
+          });
+      </script>
+      <div class="grey card">
+        <div class="content">
+          <div class="header">
+            {{ news.title }}
+          </div>
+          <div class="meta">
+            {{ moment(news.date).format('LL') }}
+          </div>
+          <div class="description">
+            {{ news.summary }}
+          </div>
+        </div>
+        
+        <div class="extra content">
+          <div class="ui two buttons">
+            {% if news.modal == false %}
+              <div class="ui basic green disabled button">Expand</div>
+            {% else %}
+              <div class="ui basic green button" id="news-modal-expand-{{ news.id }}-trigger">Expand</div>
+            {% endif %}
+            <div class="ui basic red button" id="news-modal-delete-{{ news.id }}-trigger">Delete</div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="ui modal" id="news-expand-modal-{{ news.id }}">
+            <i class="circular inverted close icon"></i>
+            <div class="header">{{ news.title }} - {{ moment(news.date).format('LL') }}</div>
+            <div class="content">
+              <div class="description">
+                <p>Title: {{ news.title }}</p>
+                <p>Date: {{ moment(news.date).format('LL') }}</p>
+                <p>Summary: {{ news.summary }}</p>
+                <p>Expanded content: {{ news.news }}</p>
+                <p>Image: <a href="{{ news.url }}">View</a></p>
+              </div>
+            </div>
+        </div>
+
+        <div class="ui small modal" id="news-delete-modal-{{ news.id }}">
+          <div class="header">{{ news.title }}</div>
+          <div class="content">
+            <p>Are you sure you want to delete {{ news.title }}?</p>
+          </div>
+
+          <div class="actions">
+            <div class="ui negative button">No</div>
+            <a href="{{ url_for('delete_news', id=news.id) }}" class="ui positive right labeled icon button">
+              Delete
+              <i class="checkmark icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <!-- Add Lecture -->
+  <div class="ui small modal" id="add-lecture-modal">
+    <div class="header">Add new lecture</div>
+    <div class="content">
+      <form class="ui form" action="{{ url_for('lectures') }}" method="post">
+        {{ lecture_form.hidden_tag() }}
+        <div class="field">
+          <label>Lecture title</label>
+          <div class="ui fluid left icon input">
+            <i class="write icon"></i>
+            {{ lecture_form.title(placeholder="Title") }}
+          </div>
+        </div>
+        
+        <div class="field">
+          <label>Lecture date</label>
+          <div class="ui fluid left icon input">
+            <i class="calendar icon"></i>
+            {{ lecture_form.date(placeholder="mm/dd/yyyy") }}
+          </div>
+        </div>
+
+        <div class"ui buttons right aligned grid">
+          <input type="submit" class="ui right floated positive submit button" value="Add">
+        </div><br><br>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add News -->
+  <script>
+    $(document).ready(function() {
+      $('.ui.file.input').find('input:text, .ui.button')
+      .on('click', function(e) {
+        $(e.target).parent().find('input:file').click();
+      });
+
+      $('input:file', '.ui.file.input')
+      .on('change', function(e) {
+        var file = $(e.target);
+        var name = '';
+    
+        for (var i=0; i<e.target.files.length; i++) {
+          name += e.target.files[i].name + ', ';
+        }
+        // remove trailing ","
+        name = name.replace(/,\s*$/, '');
+    
+        $('input:text', file.parent()).val(name);
+      });
+    });
+  </script>
+  <div class="ui small modal" id="add-news-modal">
+    <div class="header">Add news</div>
+    <div class="content">
+      <form class="ui form" action="{{ url_for('news') }}" method="post" enctype="multipart/form-data">
+        {{ news_form.hidden_tag() }}
+        <div class="field">
+          <label>News title</label>
+          <div class="ui fluid left icon input">
+            <i class="write icon"></i>
+            {{ news_form.title(placeholder="Title") }}
+          </div>
+        </div>
+        
+        <div class="field">
+          <label>News date</label>
+          <div class="ui fluid left icon input">
+            <i class="calendar icon"></i>
+            {{ news_form.date(placeholder="mm/dd/yyyy") }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label>News summary</label>
+          <div class="ui fluid left icon input">
+            <i class="ellipsis horizontal icon"></i>
+            {{ news_form.summary(placeholder="Summary") }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label>News to show in modal (optional)</label>
+          {{ news_form.news(id="news_form", rows=3) }}
+        </div>
+
+        <div class="field">
+          <label>Image to display in the modal</label>
+          <div class="ui fluid file input action">
+              <input type="text" readonly>
+              {{ news_form.image(style="display: none;", id="file1", autocomplete="off") }}
+              <div class="ui button">
+                  Select...
+              </div>
+          </div>
+        </div>
+
+        <div class"ui buttons right aligned grid">
+          <input type="submit" class="ui right floated positive submit button" value="Add">
+        </div><br><br>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
