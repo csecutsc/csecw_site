@@ -50,7 +50,7 @@ p {
     position: fixed;
     right: 0px;
     font-family: 'Open Sans', sans-serif;
-    background-color:black;
+    background-color: black;
     color: white;
     margin-top: 5px;
 }
@@ -84,6 +84,7 @@ p {
     width: 80%;
     max-width: 1400px;
     height: auto;
+    display: none;
 }
 
 .news-item {
@@ -118,8 +119,8 @@ p {
 }
 
 #news-icon {
-  position: absolute;
-  right: 3%;
+    position: absolute;
+    right: 3%;
 }
 
 #news-container {
@@ -145,8 +146,8 @@ p {
     background-color: #2E3192;
 }
 
-#about-subsection{
-    width:70%;
+#about-subsection {
+    width: 70%;
 }
 
 .blue-link {
@@ -190,7 +191,8 @@ p {
     font-family: 'Open Sans', sans-serif;
 }
 
-.ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui) {
+.ui.card>.content>.header:not(.ui),
+.ui.cards>.card>.content>.header:not(.ui) {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -198,17 +200,20 @@ p {
     padding-top: 2%;
 }
 
-.ui.card .content img, .ui.cards>.card .content img {
+.ui.card .content img,
+.ui.cards>.card .content img {
     display: none;
 }
 
-.ui.card>.extra a:not(.ui), .ui.cards>.card>.extra a:not(.ui) {
+.ui.card>.extra a:not(.ui),
+.ui.cards>.card>.extra a:not(.ui) {
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-    color: rgba(0,0,0,.4);
+    color: rgba(0, 0, 0, .4);
 }
 
-.ui.card>.extra a:not(.ui):hover, .ui.cards>.card>.extra a:not(.ui):hover {
-    color: rgba(0,0,0,.8);
+.ui.card>.extra a:not(.ui):hover,
+.ui.cards>.card>.extra a:not(.ui):hover {
+    color: rgba(0, 0, 0, .8);
 }
 
 #contact {
@@ -224,17 +229,18 @@ p {
     text-align: center;
 }
 
-#resources .button{
+#resources .button {
     visibility: hidden;
 }
 
-#team .cards{
+#team .cards {
     visibility: hidden;
 }
 
-#about-subsection .items{
+#about-subsection .items {
     visibility: hidden;
 }
+
 
 /*Large Devices*/
 
@@ -248,7 +254,7 @@ p {
     #sidebar {
         display: inline-block;
     }
-    #about-subsection{
+    #about-subsection {
         width: 70%;
     }
 }
@@ -266,13 +272,14 @@ p {
     #mobile-menu {
         display: none;
     }
-    #about-subsection{
+    #about-subsection {
         width: 70%;
     }
-
 }
 
+
 /*Tablets*/
+
 @media (max-width: 1023px) and (min-width: 767px) {
     .pushed {
         padding-left: 0px;
@@ -293,7 +300,7 @@ p {
         width: 80vw;
         height: auto;
     }
-    #about-subsection{
+    #about-subsection {
         width: 100%;
     }
     .resource-buttons {
@@ -303,6 +310,7 @@ p {
         width: 100%;
     }
 }
+
 
 /*Phones*/
 
@@ -326,7 +334,7 @@ p {
         width: 80vw;
         height: auto;
     }
-    #about-subsection{
+    #about-subsection {
         width: 100%;
     }
     .resource-buttons {
@@ -335,10 +343,12 @@ p {
     p {
         width: 100%;
     }
-    .ui.card>.image:not(.ui)>img, .ui.cards>.card>.image:not(.ui)>img {
+    .ui.card>.image:not(.ui)>img,
+    .ui.cards>.card>.image:not(.ui)>img {
         display: none;
     }
-    .ui.card .content img, .ui.cards>.card .content img {
+    .ui.card .content img,
+    .ui.cards>.card .content img {
         display: unset;
     }
 }
