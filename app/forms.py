@@ -33,10 +33,8 @@ class LectureMaterialForm(FlaskForm):
 
     # Get all choices
     choices = []
-    try:
-        lectures = Lecture.query.all()
-    except:
-        lectures = []
+    lectures = Lecture.query.all()
+
     for lecture in lectures:
         choices.append((str(lecture.id), lecture.title))
 
@@ -59,3 +57,15 @@ class NewsForm(FlaskForm):
 
     image = FileField('image', validators=[
                       FileAllowed(images, 'Images only!')])
+
+
+class ResourcesForm(FlaskForm):
+    description = StringField('description', validators=[DataRequired()])
+    resource = StringField('resource', validators=[DataRequired()])
+
+    # Get all material types
+    choices = [('file powerpoint outline icon', 'Powerpoint'), ('file pdf outline icon', 'PDF'),
+               ('file text outline icon', 'Text'), ('github icon', 'GitHub'),
+               ('desktop icon', 'Desktop'), ('browser icon', 'Browser')]
+    resource_type = SelectField(
+        'resource_type', choices=choices, validators=[DataRequired()])

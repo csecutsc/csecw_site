@@ -1,8 +1,8 @@
 from flask import render_template, redirect, flash, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, bcrypt, images
-from .forms import LoginForm, RegisterForm, LectureForm, LectureMaterialForm, NewsForm
-from .models import User, Lecture, LectureMaterial, News
+from .forms import LoginForm, RegisterForm, LectureForm, LectureMaterialForm, NewsForm, ResourcesForm
+from .models import User, Lecture, LectureMaterial, News, Resources
 import datetime
 
 
@@ -17,9 +17,11 @@ def index():
     lectures = Lecture.query.all()
     materials = LectureMaterial.query.all()
     all_news = News.query.all()
+    resources = Resources.query.all()
 
     return render_template('index.html', lectures=lectures,
-                           materials=materials, all_news=all_news)
+                           materials=materials, all_news=all_news,
+                           resources=resources)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -97,14 +99,18 @@ def dashboard():
     news_form = NewsForm()
     lecture_form = LectureForm()
     material_form = LectureMaterialForm()
+    resource_form = ResourcesForm()
 
     lectures = Lecture.query.all()
     materials = LectureMaterial.query.all()
     all_news = News.query.all()
+    users = User.query.all()
+    resources = Resources.query.all()
 
     return render_template("dashboard.html", title='Dashboard', lectures=lectures,
                            all_news=all_news, materials=materials, material_form=material_form,
-                           news_form=news_form, lecture_form=lecture_form)
+                           news_form=news_form, lecture_form=lecture_form, users=users,
+                           resources=resources, resource_form=resource_form)
 
 
 @app.route('/dashboard/news', methods=['POST'])
@@ -189,6 +195,20 @@ def material():
     return render_template('add_lecture_material.html', title="Add lecture material", form=form)
 
 
+@app.route('/dashboard/resources', methods=['POST'])
+@login_required
+def resources():
+    form = ResourcesForm()
+
+    if form.validate_on_submit():
+        resource = Resources(description=form.description.data,
+                             url=form.resource.data, icon=form.resource_type.data)
+        db.session.add(resource)
+        db.session.commit()
+        flash("New resource has been added")
+        return redirect(url_for('dashboard'))
+
+
 # Routes to delete items
 # Delete lectures
 @app.route('/dashboard/lectures/delete/<id>')
@@ -220,6 +240,21 @@ def delete_material(id):
         return redirect(url_for('dashboard'))
 
 
+# Delete resources
+@app.route('/dashboard/lectures/resources/delete/<id>')
+@login_required
+def delete_resource(id):
+    resource = Resources.query.get(id)
+
+    if (resource is None):
+        flash('Specified resource is not found')
+    else:
+        db.session.delete(resource)
+        db.session.commit()
+        flash('The resource specified has been deleted.')
+        return redirect(url_for('dashboard'))
+
+
 # Delete news
 @app.route('/dashboard/news/delete/<id>')
 @login_required
@@ -231,5 +266,20 @@ def delete_news(id):
     else:
         db.session.delete(news)
         db.session.commit()
-        flash('The nes item specified has been deleted.')
+        flash('The news item specified has been deleted.')
+        return redirect(url_for('dashboard'))
+
+
+# Delete user
+@app.route('/dashboard/users/delete/<id>')
+@login_required
+def delete_user(id):
+    user = User.query.get(id)
+
+    if (user is None):
+        flash('Specified user is not found')
+    else:
+        db.session.delete(news)
+        db.session.commit()
+        flash('The user specified has been deleted')
         return redirect(url_for('dashboard'))

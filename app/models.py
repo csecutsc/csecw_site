@@ -49,7 +49,18 @@ class LectureMaterial(db.Model):
     lecture_id = db.Column(db.Integer, db.ForeignKey('lecture.id'))
 
     def __repr__(self):
-        return '<id: {}, description: {}, lecture_id: {}>'.format(self.id, self.description, self.lecture_id)
+        return '<id: {}, description: {}, lecture_id: {}>'.format(
+            self.id, self.description, self.lecture_id)
+
+
+class Resources(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column('description', db.String)
+    url = db.Column('url', db.String)
+    icon = db.Column('icon', db.String)
+
+    def __repr__(self):
+        return '<Resource %r>' % (self.id)
 
 
 class News(db.Model):

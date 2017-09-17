@@ -14,6 +14,12 @@
         $('#add-news-modal').modal('show');
         e.preventDefault();
       });
+
+      $('#add-resource-modal-trigger').click(function(e) {
+        $('#add-resource-modal').modal('show');
+        e.preventDefault();
+        $('#resource_type').dropdown();
+      });
     });
   </script>
 
@@ -134,7 +140,7 @@
         <div class="ui small modal" id="lecture-{{ lecture.id }}-material-modal">
           <div class="header">Add new lecture material</div>
           <div class="content">
-            <form class="ui" action="{{ url_for('material') }}" method="post">
+            <form class="ui form" action="{{ url_for('material') }}" method="post">
               {{ material_form.hidden_tag() }}
               <div class="field">
                 <label>Description of the material</label>
@@ -251,9 +257,146 @@
       </div>
       {% endfor %}
     </div>
+  </div><br><br>
+
+  <!-- Other -->
+  <div>
+    <h1 class="ui horizontal divider header">
+      <i class="options icon"></i>
+      Other
+    </h1>
+
+    <div class="ui grid">
+      <!-- Resources -->
+      <div class="six wide column">
+        <div class="ui top attached header">
+          <a id="add-resource-modal-trigger" class="compact positive ui button right floated">Add</a>
+          Resources
+        </div>
+        <div class="ui attached segment">
+          <table class="ui compact celled red table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Link</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for resource in resources %}
+                <tr>
+                  <td class="ui icon">
+                      <i class="{{ resource.icon }}"></i><label></label>
+                  </td>
+                  <td>{{ resource.description }}</td>
+                  <td><a href="{{ resource.url }}">{{ resource.url }}</a></td>
+                  <td class="circular ui negative icon button">
+                    <a class="negative" href="{{ url_for('delete_resource', id=resource.id) }}"><i class="delete icon"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Team 
+      <div class="eleven wide column">
+        <div class="ui top attached header">
+          <a id="add-resource-modal-trigger" class="compact positive ui button right floated">Add</a>
+          Resources
+        </div>
+        <div class="ui attached segment">
+        </div>
+      </div> -->
+    </div>
+  </div><br><br>
+
+  <!-- Users -->
+  <div>
+    <h1 class="ui horizontal divider header">
+      <i class="user icon"></i>
+      Users
+    </h1>
+
+    <div class="ui cards">
+      {% for user in users %}
+        <script>
+            // if the card is clicked, it triggers the modal
+            $(document).ready(function() {
+              $('#user-delete-modal-trigger-{{ user.id }}').click(function(e) {
+                $('#user-delete-modal-{{ user.id }}').modal('show');
+                e.preventDefault();
+              });
+            });
+        </script>
+        <div class="ui card">
+          <div class="content">
+            <div class="header">{{ user.email }}</div>
+            <div class="description">
+              Logged in: {{ user.authenticated }}
+            </div>
+          </div>
+          <a id="user-delete-modal-trigger-{{ user.id }}" class="ui bottom attached negative button">
+            <i class="delete icon"></i>
+            Delete
+          </a>
+        </div>
+
+        <div class="ui small modal" id="user-delete-modal-{{ user.id }}">
+          <div class="header">{{ user.email }}</div>
+          <div class="content">
+            <p>Are you sure you want to delete this user?</p>
+          </div>
+
+          <div class="actions">
+            <div class="ui negative button">No</div>
+            <a href="{{ url_for('delete_user', id=user.id) }}" class="ui positive right labeled icon button">
+              Delete
+              <i class="checkmark icon"></i>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 
   <!-- Modals -->
+  <!-- Add Resource -->
+  <div class="ui small modal" id="add-resource-modal">
+    <div class="header">Add a new resource</div>
+    <div class="content">
+      <form class="ui form" action="{{ url_for('resources') }}" method="post">
+        {{ material_form.hidden_tag() }}
+        <div class="field">
+          <label>Description of the resource</label>
+          <div class="ui fluid left icon input">
+            <i class="write icon"></i>
+            {{ resource_form.description(placeholder="Description") }}
+          </div>
+        </div><br>
+        
+        <div class="field">
+          <label>Link to the resource</label>
+          <div class="ui fluid left icon input">
+            <i class="linkify icon"></i>
+            {{ resource_form.resource(placeholder="Link to material") }}
+          </div>
+        </div><br>
+        
+        <div class="field">
+          <label>Type of resource material</label>
+          {{ resource_form.resource_type(id="resource_type", class="ui fluid dropdown") }}
+        </div><br>
+        
+        <div class"ui buttons right aligned grid">
+          <input type="submit" class="ui right floated positive submit button" value="Add">
+        </div><br><br>
+      </form>
+    </div>
+  </div>
+
   <!-- Add Lecture -->
   <div class="ui small modal" id="add-lecture-modal">
     <div class="header">Add new lecture</div>

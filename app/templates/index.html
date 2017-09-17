@@ -61,7 +61,7 @@
                         {% if news.modal == false %}
                             <div class="ui card news">
                                 <div class="content"> <a class="header">{{ news.title }}</a>
-                                    <div class="meta">{{ news.date }}</div>
+                                    <div class="meta">{{ moment(news.date).format('LL') }} }}</div>
                                     <div class="content">{{ news.summary }}</div>
                                 </div>
                             </div>
@@ -170,10 +170,9 @@
                             <div class="resource-title"> Recommended Resources</div>
                             <i class="chevron circle down icon"></i>
                             <div class="menu">
-                                <a class="item" href="http://brackets.io/" target="_blank"><i class="desktop icon"></i>Brackets - Our recommended text editor</a>
-                                <a class="item" href="https://www.w3schools.com/" target="_blank"><i class="browser icon"></i>W3Schools - HTML, CSS, JS Tutorials</a>
-                                <a class="item" href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf" target="_blank"><i class="file pdf outline icon"></i>Github Cheat Sheet</a>
-                                <a class="item" href="http://getbootstrap.com/" target="_blank"><i class="desktop icon"></i>Bootstrap</a>
+                                {% for resource in resources %}
+                                    <a class="item" href="{{ resource.url }}" target="_blank"><i class="{{ resource.icon }}"></i>{{ resource.description }}</a>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
