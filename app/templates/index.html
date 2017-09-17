@@ -85,6 +85,7 @@
                                         <div class="content"><p>{{ news.summary }}</p></div>
                                     </div>
                                 </a>
+                                {% if news.url != "None" %}
                                 <div class="ui modal" id="modal-{{ news.id }}">
                                     <i class="circular inverted close icon"></i>
                                     <div class="header">{{ news.title }} - {{ moment(news.date).format('LL') }}</div>
@@ -94,10 +95,24 @@
                                         </div>
                                         <div class="description">
                                             <div class="ui header">{{ news.summary }}</div>
-                                            <p>{{ news.news }}</p>
+                                            <p class="modal-body">{{ news.news }}</p>
                                         </div>
                                     </div>
                                 </div>
+                                {% else %}
+                                <div class="ui modal" id="modal-{{ news.id }}">
+                                    <i class="circular inverted close icon"></i>
+                                    <div class="header">{{ news.title }} - {{ moment(news.date).format('LL') }}</div>
+                                    <div class="content">
+                                        <div class="description">
+                                            <div class="ui header">{{ news.summary }}</div>
+                                            <p class="modal-body">
+                                                {{ news.news }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}
