@@ -1,12 +1,14 @@
 #!/bin/bash
 echo "Pulling from git development branch"
 git pull origin development
+echo "going into virtual env"
+source flask/bin/activate
+echo "making database migrations"
+python db_migrate.py
 echo "stopping nginx"
 sudo systemctl stop nginx
-echo "stopping gunicorn"
-sudo systemctl stop gunicorn
-echo "starting gunicorn"
-sudo systemctl start gunicorn
+echo "restarting csec uWSGI worker"
+sudo systemctl restart csec
 echo "starting nginx"
 sudo systemctl start nginx
   
