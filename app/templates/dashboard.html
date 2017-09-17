@@ -33,14 +33,15 @@
       <i class="add icon"></i>
       News
     </a>
-  </div>
+  </div><br><br>
+
   <!-- Lectures -->
   <div id="lectures">
     <h1 class="ui horizontal divider header">  
       <i class="sticky note outline icon"></i>
       Lectures
     </h1>
-    <div class="ui three cards">
+    <div class="ui three stackable cards">
       {% for lecture in lectures %}
       <script>
           // if the card is clicked, it triggers the modal
@@ -185,7 +186,7 @@
       <i class="newspaper icon"></i>
       News
     </h1>
-    <div class="ui three cards">
+    <div class="ui three stackable cards">
       {% for news in all_news %}
       <script>
           // if the card is clicked, it triggers the modal
@@ -266,7 +267,7 @@
       Other
     </h1>
 
-    <div class="ui grid">
+    <div class="ui stackable grid">
       <!-- Resources -->
       <div class="six wide column">
         <div class="ui top attached header">
@@ -320,7 +321,7 @@
       Users
     </h1>
 
-    <div class="ui cards">
+    <div class="ui stackable cards">
       {% for user in users %}
         <script>
             // if the card is clicked, it triggers the modal
