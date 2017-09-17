@@ -10,7 +10,7 @@ Set up your working directory and make sure you are cd into it.
 ```
 python3 -m venv flask
 source flask/bin/activate
-pip install -r reqirements.txt
+pip install -r requirements.txt
 ```
 
 ## Set up the database
