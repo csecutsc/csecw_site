@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, bcrypt, images
 from .forms import LoginForm, RegisterForm, LectureForm, LectureMaterialForm, NewsForm, ResourcesForm
 from .models import User, Lecture, LectureMaterial, News, Resources
+from config import REGISTER_CODE
 import datetime
 
 
@@ -39,7 +40,7 @@ def register():
             flash("This account already exists.")
         else:
             # User does not exist so we check if code is correct
-            if form.code.data == "lmao":
+            if form.code.data == REGISTER_CODE:
                 password = bcrypt.generate_password_hash(form.password.data)
                 user = User(email=form.email.data, password=password)
 
@@ -279,7 +280,7 @@ def delete_user(id):
     if (user is None):
         flash('Specified user is not found')
     else:
-        db.session.delete(news)
+        db.session.delete(user)
         db.session.commit()
         flash('The user specified has been deleted')
         return redirect(url_for('dashboard'))
