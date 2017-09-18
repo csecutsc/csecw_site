@@ -40,18 +40,19 @@
         <a class="item" href="#resources">Resources</a>
         <a class="item" href="#team">Team</a>
         <a class="item" href="#contact">Contact</a>
+        <!-- <a class="item" href="../index.html"><i class="chevron left icon"></i>CSEC</a> -->
         {% if current_user.is_authenticated %}
         <a class="item" href="/dashboard">Dashboard</a>
         <a class="item" href="/logout">Logout</a>
         {% endif %}
     </div>
-
     <div class="ui black button" href="#" id="mobile-menu">Menu<i class="right sidebar icon"></i></div>
 
     <div id="page-content">
         <!-- Home Section -->
-        <div id="home"> <img id="splash-logo" src="{{ url_for('static', filename='images/splash_logo.png') }}"></div>
-
+        <div id="home"> 
+            <img id="splash-logo" src="{{ url_for('static', filename='images/splash_logo.png') }}">
+        </div>
         <!-- News Section -->
         <div id="news">
             <div class="ui fluid container pushed">
