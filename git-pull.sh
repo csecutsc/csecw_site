@@ -2,7 +2,7 @@
 echo "Pulling from git development branch"
 git pull origin master
 echo "going into virtual env"
-source flask/bin/activate
+source flaskenv/bin/activate
 echo "making database migrations"
 python db_migrate.py
 echo "stopping nginx"
