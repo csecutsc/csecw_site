@@ -124,7 +124,7 @@ p {
 }
 
 #news-container {
-    margin-top: 10px;
+    margin-top: 40px;
     overflow-y: hidden;
     overflow-x: scroll;
     white-space: nowrap;
@@ -350,5 +350,13 @@ p {
     .ui.card .content img,
     .ui.cards>.card .content img {
         display: unset;
+    }
+    #news,
+    #about,
+    #resources,
+    #team,
+    #contact {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
