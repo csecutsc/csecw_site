@@ -139,7 +139,7 @@ def news():
             no_image = True
 
         if not no_image:
-            url = images.url(filename)
+            url = '/static/resources/' + filename
         else:
             url = "None"
 
