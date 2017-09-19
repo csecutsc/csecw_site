@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Pulling from git development branch"
-git pull origin development
+git pull origin master
 echo "going into virtual env"
 source flask/bin/activate
 echo "making database migrations"
