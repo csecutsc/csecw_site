@@ -24,3 +24,4 @@ htmlcov
 *,cover
 *.db
 db_repository/
+app/static/resources/*.*
