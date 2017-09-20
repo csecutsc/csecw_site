@@ -195,21 +195,26 @@
                 </div>
 
                 <div class="ui four column doubling stackable grid resource-buttons" style="margin-top: 25px;">
-                    {% for lecture in lectures | reverse %}
-                    <div class="column">
-                        <div class="ui big fluid dropdown right labeled icon button blue">
-                            <div class="resource-title"> {{ lecture.title }}</div>
-                            <div class="date">{{ moment(lecture.date).format('LL') }}</div> <i class="chevron circle down icon"></i>
-                            <div class="menu">
-                                {% for material in materials %}
-                                    {% if material.lecture_id == lecture.id %}
-                                    <a class="item" href="{{ material.url }}" target="_blank"><i class="{{ material.icon }}"></i>{{ material.description }}</a>                    
-                                    {% endif %}
-                                {% endfor %}
+                    {% if lectures|length <= 0 %}
+                        <!-- Displaying message to notify user there are no lectures/resources atm -->
+                        <p class="ui header empty" style="padding-top: 10px;padding-bottom: 15px; color: #1d6392;">There are no resources available currently. Check back later!</p>
+                    {% else %}
+                        {% for lecture in lectures | reverse %}
+                        <div class="column">
+                            <div class="ui big fluid dropdown right labeled icon button blue">
+                                <div class="resource-title"> {{ lecture.title }}</div>
+                                <div class="date">{{ moment(lecture.date).format('LL') }}</div> <i class="chevron circle down icon"></i>
+                                <div class="menu">
+                                    {% for material in materials %}
+                                        {% if material.lecture_id == lecture.id %}
+                                        <a class="item" href="{{ material.url }}" target="_blank"><i class="{{ material.icon }}"></i>{{ material.description }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -288,7 +293,7 @@
                         </div>
                         <div class="ui list">
                             <div class="item">
-                                <a href="https://www.utsc.utoronto.ca/~csec/" target="_blank"> <i class="home icon"></i> CSEC Home Page</a>
+                                <a href="https://csec.club" target="_blank"> <i class="home icon"></i> CSEC Home Page</a>
                             </div>
                             <div class="item">
                                 <a href="mailto:csec@utsc.utoronto.ca" target="_blank"> <i class="mail icon"></i> Email</a>
