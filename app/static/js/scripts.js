@@ -36,13 +36,6 @@ $(document).ready(function () {
       transition: 'slide down'
     });
 
-    $('#sidebar').visibility({
-        once       : true,
-        continuous : false,
-        onTopVisible  : function(calculations) {
-        $('#sidebar a').transition('fade down in', '2s');
-        }
-    });
     // animations for sections
     $('#news').visibility({
         once       : true,

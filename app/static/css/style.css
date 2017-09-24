@@ -3,7 +3,7 @@
     border: none;
     padding: 50px;
     height: 100vh;
-    display: none;
+    display: inline-block;
 }
 
 #sidebar .item {
@@ -252,9 +252,6 @@ p {
     #mobile-menu {
         display: none;
     }
-    #sidebar {
-        display: inline-block;
-    }
     #about-subsection {
         width: 70%;
     }
@@ -266,9 +263,6 @@ p {
 @media (max-width: 1399px) and (min-width: 1023px) {
     .pushed {
         padding-left: 215px;
-    }
-    #sidebar {
-        display: inline-block;
     }
     #mobile-menu {
         display: none;
