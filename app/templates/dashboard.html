@@ -66,7 +66,7 @@
       <div class="ui blue card">
         <div class="content">
           <div class="header">
-            {{ lecture.title }}
+            {{ lecture.id }}: {{ lecture.title }}
           </div>
           <div class="meta">
             {{ moment(lecture.date).format('LL') }}
@@ -161,7 +161,7 @@
               
               <div class="field">
                 <label>Lecture the material is for</label>
-                {{ material_form.lecture(id="lecture", class="ui fluid dropdown") }}
+                {{ material_form.lecture(placeholder="Lecture ID") }}
               </div><br>
               
               <div class="field">
@@ -418,7 +418,7 @@
           <label>Lecture date</label>
           <div class="ui fluid left icon input">
             <i class="calendar icon"></i>
-            {{ lecture_form.date(placeholder="mm/dd/yyyy") }}
+            {{ lecture_form.date(class="datepicker") }}
           </div>
         </div>
 
@@ -469,7 +469,7 @@
           <label>News date</label>
           <div class="ui fluid left icon input">
             <i class="calendar icon"></i>
-            {{ news_form.date(placeholder="mm/dd/yyyy") }}
+            {{ news_form.date(class="datepicker") }}
           </div>
         </div>
 

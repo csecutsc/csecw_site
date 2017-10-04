@@ -40,7 +40,7 @@ def register():
             flash("This account already exists.")
         else:
             # User does not exist so we check if code is correct
-            if form.code.data == REGISTER_CODE:
+            if str(form.code.data) == str(REGISTER_CODE):
                 password = bcrypt.generate_password_hash(form.password.data)
                 user = User(email=form.email.data, password=password)
 
@@ -114,6 +114,11 @@ def dashboard():
                            resources=resources, resource_form=resource_form)
 
 
+#####################################
+#####################################
+########## POST ROUTES ##############
+#####################################
+#####################################
 @app.route('/dashboard/news', methods=['POST'])
 @login_required
 def news():
@@ -151,7 +156,9 @@ def news():
 
         flash("News was added")
         return redirect(url_for('dashboard'))
-    return render_template('add_news.html', title="Add news", form=form)
+
+    flash('News was not added properly')
+    return redirect(url_for('dashboard'))
 
 
 @app.route('/dashboard/lectures', methods=['POST'])
@@ -172,7 +179,8 @@ def lectures():
         flash('New lecture was added')
         return redirect(url_for('dashboard'))
 
-    return render_template('add_lecture.html', title="Add lecture", form=form)
+    flash('Lecture was not added properly. Try again!')
+    return redirect(url_for('dashboard'))
 
 
 @app.route('/dashboard/lectures/material', methods=['POST'])
@@ -184,6 +192,10 @@ def material():
         # Get the lecture for which this material is for
         lecture = Lecture.query.filter_by(id=form.lecture.data).first()
 
+        if (lecture is None):
+            flash('Lecture was not found in database. Please enter proper lecture ID.')
+            return redirect(url_for('dashboard'))
+
         lecture_material = LectureMaterial(description=form.description.data,
                                            url=form.material.data, lecture=lecture,
                                            icon=form.material_type.data)
@@ -193,7 +205,8 @@ def material():
         flash('New lecture material was added')
         return redirect(url_for('dashboard'))
 
-    return render_template('add_lecture_material.html', title="Add lecture material", form=form)
+    flash('Lecture material was not added properly. Try again!')
+    return redirect(url_for('dashboard'))
 
 
 @app.route('/dashboard/resources', methods=['POST'])
@@ -209,8 +222,16 @@ def resources():
         flash("New resource has been added")
         return redirect(url_for('dashboard'))
 
+    flash('Resource was not added properly. Try again!')
+    return redirect(url_for('dashboard'))
 
-# Routes to delete items
+#####################################
+#####################################
+########## DELETE ROUTES ############
+#####################################
+#####################################
+
+
 # Delete lectures
 @app.route('/dashboard/lectures/delete/<id>')
 @login_required

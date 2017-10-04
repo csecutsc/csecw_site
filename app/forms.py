@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, DateField, SelectField, TextAreaField
+from wtforms import StringField, PasswordField, SelectField, TextAreaField
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from .models import User, Lecture
@@ -23,23 +24,16 @@ class RegisterForm(FlaskForm):
 
 
 class LectureForm(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
-    date = DateField('date', format='%m/%d/%Y')
+    title = StringField('title', validators=[
+                        DataRequired('Title is required for a lecture')])
+    date = DateField('date', format='%Y-%m-%d',
+                     validators=[DataRequired('Date is required for a lecture')])
 
 
 class LectureMaterialForm(FlaskForm):
     description = StringField('description', validators=[DataRequired()])
     material = StringField('material', validators=[DataRequired()])
-
-    # Get all choices
-    choices = []
-    lectures = Lecture.query.all()
-
-    for lecture in lectures:
-        choices.append((str(lecture.id), lecture.title))
-
-    lecture = SelectField('lecture', choices=choices,
-                          validators=[DataRequired()])
+    lecture = StringField('lecture', validators=[DataRequired()])
 
     # Get all material types
     choices = [('file powerpoint outline icon', 'Powerpoint'), ('file pdf outline icon', 'PDF'),
@@ -51,7 +45,7 @@ class LectureMaterialForm(FlaskForm):
 class NewsForm(FlaskForm):
     title = StringField('title', validators=[DataRequired()])
     summary = StringField('summary', validators=[DataRequired()])
-    date = DateField('date', format='%m/%d/%Y')
+    date = DateField('date', format='%Y-%m-%d')
 
     news = TextAreaField('news')
 
