@@ -16,4 +16,4 @@ UPLOADS_DEFAULT_URL = 'http://localhost:5000/static/resources/'
 UPLOADED_IMAGES_DEST = TOP_LEVEL_DIR + '/app/static/resources/'
 UPLOADED_IMAGES_URL = 'http://localhost:5000/static/resources/'
 
-REGISTER_CODE = str(os.environ.get('SECRET_KEY_REGISTER'))
+REGISTER_CODE = os.environ.get('SECRET_KEY_REGISTER')
