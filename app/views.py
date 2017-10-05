@@ -40,7 +40,7 @@ def register():
             flash("This account already exists.")
         else:
             # User does not exist so we check if code is correct
-            if str(form.code.data) == str(REGISTER_CODE):
+            if form.code.data == REGISTER_CODE:
                 password = bcrypt.generate_password_hash(form.password.data)
                 user = User(email=form.email.data, password=password)
 

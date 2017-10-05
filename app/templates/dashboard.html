@@ -147,7 +147,7 @@
                 <label>Description of the material</label>
                 <div class="ui fluid left icon input">
                   <i class="write icon"></i>
-                  {{ material_form.description(placeholder="Description") }}
+                  {{ material_form.description(autocomplete="off", placeholder="Description") }}
                 </div>
               </div><br>
               
@@ -155,7 +155,7 @@
                 <label>Link to the material</label>
                 <div class="ui fluid left icon input">
                   <i class="linkify icon"></i>
-                  {{ material_form.material(placeholder="Link to material") }}
+                  {{ material_form.material(autocomplete="off", placeholder="Link to material") }}
                 </div>
               </div><br>
               
@@ -229,11 +229,11 @@
         <!-- Modal -->
         <div class="ui modal" id="news-expand-modal-{{ news.id }}">
             <i class="circular inverted close icon"></i>
-            <div class="header">{{ news.title }} - {{ moment(news.date).format('LL') }}</div>
+            <div class="header">{{ news.title }}</div>
             <div class="content">
               <div class="description">
                 <p>Title: {{ news.title }}</p>
-                <p>Date: {{ moment(news.date).format('LL') }}</p>
+                <p>Date posted: {{ moment(news.date).format('LL') }}</p>
                 <p>Summary: {{ news.summary }}</p>
                 <p>Expanded content: {{ news.news }}</p>
                 <p>Image: <a href="{{ news.url }}">View</a></p>
@@ -376,7 +376,7 @@
           <label>Description of the resource</label>
           <div class="ui fluid left icon input">
             <i class="write icon"></i>
-            {{ resource_form.description(placeholder="Description") }}
+            {{ resource_form.description(autocomplete="off", placeholder="Description") }}
           </div>
         </div><br>
         
@@ -384,7 +384,7 @@
           <label>Link to the resource</label>
           <div class="ui fluid left icon input">
             <i class="linkify icon"></i>
-            {{ resource_form.resource(placeholder="Link to material") }}
+            {{ resource_form.resource(autocomplete="off", placeholder="Link to material") }}
           </div>
         </div><br>
         
@@ -410,7 +410,7 @@
           <label>Lecture title</label>
           <div class="ui fluid left icon input">
             <i class="write icon"></i>
-            {{ lecture_form.title(placeholder="Title") }}
+            {{ lecture_form.title(autocomplete="off", placeholder="Title") }}
           </div>
         </div>
         
@@ -461,7 +461,7 @@
           <label>News title</label>
           <div class="ui fluid left icon input">
             <i class="write icon"></i>
-            {{ news_form.title(placeholder="Title") }}
+            {{ news_form.title(autocomplete="off", maxlength="25", placeholder="Title; Limit: 25 chars") }}
           </div>
         </div>
         
@@ -477,7 +477,7 @@
           <label>News summary</label>
           <div class="ui fluid left icon input">
             <i class="ellipsis horizontal icon"></i>
-            {{ news_form.summary(placeholder="Summary") }}
+            {{ news_form.summary(autocomplete="off", maxlength="40", placeholder="Summary; Limit: 40 chars") }}
           </div>
         </div>
 

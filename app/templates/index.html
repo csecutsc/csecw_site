@@ -89,7 +89,7 @@
                                 {% if news.url != "None" %}
                                 <div class="ui modal" id="modal-{{ news.id }}">
                                     <i class="circular inverted close icon"></i>
-                                    <div class="header">{{ news.title }} - {{ moment(news.date).format('LL') }}</div>
+                                    <div class="header">{{ news.title }}</div>
                                     <div class="image content">
                                         <div class="ui medium image">
                                             <img src="{{ news.url }}">
@@ -103,7 +103,7 @@
                                 {% else %}
                                 <div class="ui modal" id="modal-{{ news.id }}">
                                     <i class="circular inverted close icon"></i>
-                                    <div class="header">{{ news.title }} - {{ moment(news.date).format('LL') }}</div>
+                                    <div class="header">{{ news.title }}</div>
                                     <div class="content">
                                         <div class="description">
                                             <div class="ui header">{{ news.summary }}</div>
