@@ -1,519 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="CSEC-W is the Computer Science Enrichment Club’s Web Development Division. We teach transferable Web Development skills to students.">
-    <meta name="keywords" content="HTML, CSS, JavaScript, BootStrap, UTSC, BootStrap, CSEC, CSEC-W, CSEC WEB DIVISION, COMPUTER SCIENCE ENRICHMENT CLUB, WEB DIVISION, UOFT, University of Toronto">
-    <meta name="author" content="CSEC Web Division">
-    <meta name="theme-color" content="#262626">
-    <title>CSEC-W | Web Division</title>
-    <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='images/icon.png') }}">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name="description" content="CSEC-W is the Computer Science Enrichment Club’s Web Development Division. We teach transferable Web Development skills to students.">
+  <meta name="keywords" content="HTML, CSS, JavaScript, BootStrap, UTSC, BootStrap, CSEC, CSEC-W, CSEC WEB DIVISION, COMPUTER SCIENCE ENRICHMENT CLUB, WEB DIVISION, UOFT, University of Toronto">
+  <meta name="author" content="CSEC Web Division">
+  <meta name="theme-color" content="#262626">
+  <title>CSEC-W | Web Division</title>
+  <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='images/icon.png') }}">
 
-    <!-- Latest JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <!-- Import Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:800|Roboto:700,900" rel="stylesheet">
+  <!-- Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:800|Roboto:700,900" rel="stylesheet">
 
-    <!-- Semantic-UI -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+  <!-- Semantic-UI -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 
-    <!-- Custom Stylesheet and js -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  <!-- Custom Stylesheet and js -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 
-    <!-- Moment -->
-    {{ moment.include_moment() }}
+  <!-- Moment -->
+  {{ moment.include_moment() }}
 </head>
 
 <body>
-    <!-- Sidebar Navigation -->
-    <div class="ui left fixed secondary vertical pointing menu" id="sidebar">
-        <a class="item" href="#home">
+  <!-- Sidebar Navigation -->
+  <div class="ui left fixed secondary vertical pointing menu" id="sidebar">
+    <a class="item" href="#home">
             <img class="ui image" src="{{ url_for('static', filename='images/logo_horizontal.png') }}">
         </a>
-        <a class="item" href="#news">News</a>
-        <a class="item" href="#about">About Us</a>
-        <a class="item" href="#resources">Resources</a>
-        <a class="item" href="#team">Team</a>
-        <a class="item" href="#contact">Contact</a>
-        <a class="item" href="http://csec.club"><i class="chevron left icon"></i>CSEC</a>
-        {% if current_user.is_authenticated %}
-        <a class="item" href="/dashboard">Dashboard</a>
-        <a class="item" href="/logout">Logout</a>
-        {% endif %}
-    </div>
-    <div class="ui black button" href="#" id="mobile-menu">Menu<i class="right sidebar icon"></i></div>
+    <a class="item" href="#news">News</a>
+    <a class="item" href="#about">About Us</a>
+    <a class="item" href="#resources">Resources</a>
+    <a class="item" href="#team">Team</a>
+    <a class="item" href="#contact">Contact</a>
+    <a class="item" href="http://csec.club"><i class="chevron left icon"></i>CSEC</a> {% if current_user.is_authenticated %}
+    <a class="item" href="/dashboard">Dashboard</a>
+    <a class="item" href="/logout">Logout</a> {% endif %}
+  </div>
+  <div class="ui black button" href="#" id="mobile-menu">Menu<i class="right sidebar icon"></i></div>
 
-    <div id="page-content">
-        <!-- Home Section -->
-        <div id="home"> 
-            <img id="splash-logo" src="{{ url_for('static', filename='images/splash_logo.png') }}">
+  <div id="page-content">
+    <!-- Home Section -->
+    <div id="home">
+      <img id="splash-logo" src="{{ url_for('static', filename='images/splash_logo.png') }}">
+    </div>
+    <div id="next-lecture">
+      <div class="ui fluid container pushed">
+        <h1 class="section-title">NEXT MEETING</h1>
+        <div class="lecture-container">
+          <h3 class="subsection-title">WEDNESDAY JAN 6, 2018: INTRODUCTION TO JAVASCRIPT</h3>
         </div>
-        <!-- News Section -->
-        <div id="news">
-            <div class="ui fluid container pushed">
-                <h1 class="section-title">NEWS</h1>
-                <div id="news-container">
-                    {% for news in all_news | reverse %}
-                        {% if news.modal == false %}
-                            <div class="ui card news">
-                                <div class="content"> <a class="header">{{ news.title }}</a>
-                                    <div class="meta">{{ moment(news.date).format('LL') }}</div>
-                                    <div class="content">{{ news.summary }}</div>
-                                </div>
-                            </div>
-                        {% else %}
-                            <script>
-                                // if the card is clicked, it triggers the modal
-                                $(document).ready(function() {
-                                    $('#modal-{{ news.id }}-trigger').click(function(e) {
-                                        $('#modal-{{ news.id }}').modal('show');
-                                        e.preventDefault();
-                                    });
-                                });
-                            </script>
-                            <div class="ui card news">
-                                <a href="#">
-                                    <div class="content">
-                                        <a class="header" id="modal-{{ news.id }}-trigger">{{ news.title }}
+      </div>
+    </div>
+    <!-- News Section -->
+    <div id="news">
+      <div class="ui fluid container pushed">
+        <h1 class="section-title">NEWS</h1>
+        <div id="news-container">
+          {% for news in all_news | reverse %} {% if news.modal == false %}
+          <div class="ui card news">
+            <div class="content"> <a class="header">{{ news.title }}</a>
+              <div class="meta">{{ moment(news.date).format('LL') }}</div>
+              <div class="content">{{ news.summary }}</div>
+            </div>
+          </div>
+          {% else %}
+          <script>
+            // if the card is clicked, it triggers the modal
+            $(document).ready(function() {
+              $('#modal-{{ news.id }}-trigger').click(function(e) {
+                $('#modal-{{ news.id }}').modal('show');
+                e.preventDefault();
+              });
+            });
+
+          </script>
+          <div class="ui card news">
+            <a href="#">
+              <div class="content">
+                <a class="header" id="modal-{{ news.id }}-trigger">{{ news.title }}
                                             <i class="expand icon" id="news-icon"></i>
                                         </a>
-                                        <div class="meta">{{ moment(news.date).format('LL') }}</div>
-                                        <div class="content"><p>{{ news.summary }}</p></div>
-                                    </div>
-                                </a>
-                                {% if news.url != "None" %}
-                                <div class="ui modal" id="modal-{{ news.id }}">
-                                    <i class="circular inverted close icon"></i>
-                                    <div class="header">{{ news.title }}</div>
-                                    <div class="image content">
-                                        <div class="ui medium image">
-                                            <img src="{{ news.url }}">
-                                        </div>
-                                        <div class="description">
-                                            <div class="ui header">{{ news.summary }}</div>
-                                            <p class="modal-body">{{ news.news }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% else %}
-                                <div class="ui modal" id="modal-{{ news.id }}">
-                                    <i class="circular inverted close icon"></i>
-                                    <div class="header">{{ news.title }}</div>
-                                    <div class="content">
-                                        <div class="description">
-                                            <div class="ui header">{{ news.summary }}</div>
-                                            <p class="modal-body">
-                                                {{ news.news }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                <div class="meta">{{ moment(news.date).format('LL') }}</div>
+                <div class="content">
+                  <p>{{ news.summary }}</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- About Section -->
-        <div id="about">
-            <div class="ui fluid container pushed">
-                <h1 class="section-title">ABOUT US</h1>
-                <p> Founded in 2017, CSEC-W is the Computer Science Enrichment Club’s Web Development Division. We are a group of passionate second-year Computer Science students seeking to teach transferable web development skills and practical software tools which can be used in conjunction to create a participant’s very first responsive website. We welcome all students from all majors to join us. No previous programming experience is required.</p>
-                <div class="ui two column stackable grid" id="about-subsection">
-                    <div class="column">
-                      <h3 class="subsection-title">WHAT WE TEACH</h3>
-                      <div class="ui two column grid">
-                        <div class="column">
-                          <div class="ui list">
-                            <div class="item">
-                              <i class="html5 icon"></i> HTML
-                            </div>
-                            <div class="item">
-                              <i class="css3 icon"></i> CSS
-                            </div>
-                            <div class="item">
-                              <i class="code icon"></i> Javascript
-                            </div>
-                          </div>
-                        </div>
-                      <div class="column">
-                        <div class="ui list">
-                          <div class="item">
-                            <i class="window maximize icon"></i> Hosting
-                          </div>
-                          <div class="item">
-                            <i class="idea icon"></i> UX Design
-                          </div>
-                          <div class="item">
-                            <i class="terminal icon"></i> git
-                          </div>
-                          <div class="item">
-                            and more!
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                    <div class="column">
-                      <h3 class="subsection-title">WHEN</h3>
-                      <p>We operate on a weekly basis, with lectures every Tuesday, from 6 pm to 8 pm. You can <a class="blue-link" href="#contact"><b>contact</b></a> us through a variety of methods.</p> </div>
+              </div>
+            </a>
+            {% if news.url != "None" %}
+            <div class="ui modal" id="modal-{{ news.id }}">
+              <i class="circular inverted close icon"></i>
+              <div class="header">{{ news.title }}</div>
+              <div class="image content">
+                <div class="ui medium image">
+                  <img src="{{ news.url }}">
                 </div>
+                <div class="description">
+                  <div class="ui header">{{ news.summary }}</div>
+                  <p class="modal-body">{{ news.news }}</p>
+                </div>
+              </div>
             </div>
+            {% else %}
+            <div class="ui modal" id="modal-{{ news.id }}">
+              <i class="circular inverted close icon"></i>
+              <div class="header">{{ news.title }}</div>
+              <div class="content">
+                <div class="description">
+                  <div class="ui header">{{ news.summary }}</div>
+                  <p class="modal-body">
+                    {{ news.news }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          {% endif %} {% endfor %}
         </div>
+      </div>
+    </div>
 
-        <!-- Resources Section -->
-        <div id="resources">
-            <!-- Icons for later
+    <!-- About Section -->
+    <div id="about">
+      <div class="ui fluid container pushed">
+        <h1 class="section-title">ABOUT US</h1>
+        <p> Founded in 2017, CSEC-W is the Computer Science Enrichment Club’s Web Development Division. We are a group of passionate second-year Computer Science students seeking to teach transferable web development skills and practical software tools which can be used in conjunction to create a participant’s very first responsive website. We welcome all students from all majors to join us. No previous programming experience is required.</p>
+        <div class="ui two column stackable grid" id="about-subsection">
+          <div class="column">
+            <h3 class="subsection-title">WHAT WE TEACH</h3>
+            <div class="ui two column grid">
+              <div class="column">
+                <div class="ui list">
+                  <div class="item">
+                    <i class="html5 icon"></i> HTML
+                  </div>
+                  <div class="item">
+                    <i class="css3 icon"></i> CSS
+                  </div>
+                  <div class="item">
+                    <i class="code icon"></i> Javascript
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="ui list">
+                  <div class="item">
+                    <i class="window maximize icon"></i> Hosting
+                  </div>
+                  <div class="item">
+                    <i class="idea icon"></i> UX Design
+                  </div>
+                  <div class="item">
+                    <i class="terminal icon"></i> git
+                  </div>
+                  <div class="item">
+                    and more!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <h3 class="subsection-title">WHEN</h3>
+            <p>We operate on a weekly basis, with lectures bi-weekly on Wednesday, from 5 pm to 7 pm. You can <a class="blue-link" href="#contact"><b>contact</b></a> us through a variety of methods.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div id="resources">
+      <!-- Icons for later
             <i class="file powerpoint outline icon"></i>
             <i class="file pdf outline icon"></i>
             <i class="file text outline icon"></i>
             -->
-            <!-- TODO: add recommended resources -->
-            <div class="ui fluid container pushed">
-                <div class="ui two column stackable grid">
-                    <div class="column left floated left aligned">
-                        <h1 class="section-title">RESOURCES</h1>
-                    </div>
-                    <div class="four wide column right floated right aligned">
-                        <div class="ui fluid dropdown right labeled icon button black">
-                            <div class="resource-title"> Recommended Resources</div>
-                            <i class="chevron circle down icon"></i>
-                            <div class="menu">
-                                {% for resource in resources %}
-                                    <a class="item" href="{{ resource.url }}" target="_blank"><i class="{{ resource.icon }}"></i>{{ resource.description }}</a>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ui four column doubling stackable grid resource-buttons" style="margin-top: 25px;">
-                    {% if lectures|length <= 0 %}
-                        <!-- Displaying message to notify user there are no lectures/resources atm -->
-                        <p class="ui header empty" style="padding-top: 10px;padding-bottom: 15px; color: #1d6392;">There are no resources available currently. Check back later!</p>
-                    {% else %}
-                        {% for lecture in lectures | reverse %}
-                        <div class="column">
-                            <div class="ui big fluid dropdown right labeled icon button blue">
-                                <div class="resource-title"> {{ lecture.title }}</div>
-                                <div class="date">{{ moment(lecture.date).format('LL') }}</div> <i class="chevron circle down icon"></i>
-                                <div class="menu">
-                                    {% for material in materials %}
-                                        {% if material.lecture_id == lecture.id %}
-                                        <a class="item" href="{{ material.url }}" target="_blank"><i class="{{ material.icon }}"></i>{{ material.description }}</a>
-                                        {% endif %}
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+      <div class="ui fluid container pushed">
+        <div class="ui two column stackable grid">
+          <div class="column left floated left aligned">
+            <h1 class="section-title">RESOURCES</h1>
+          </div>
+          <div class="four wide column right floated right aligned">
+            <div class="ui fluid dropdown right labeled icon button black">
+              <div class="resource-title"> Recommended Resources</div>
+              <i class="chevron circle down icon"></i>
+              <div class="menu">
+                {% for resource in resources %}
+                <a class="item" href="{{ resource.url }}" target="_blank"><i class="{{ resource.icon }}"></i>{{ resource.description }}</a> {% endfor %}
+              </div>
             </div>
+          </div>
         </div>
 
-        <!-- Team Section -->
-        <div id="team">
-            <div class="ui fluid container pushed">
-                <h1 class="section-title">TEAM</h1>
-                <div class="ui five stackable cards team-members">
-                    <div class="card">
-                        <div class="image"> <img src="{{ url_for('static', filename='images/kohilan.jpg') }}"> </div>
-                        <div class="content">
-                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/kohilan-small.jpg') }}">
-                            <div class="header">Kohilan Mohanarajan</div>
-                            <div class="meta"> <span class="position-title">Division Leader</span> </div>
-                        </div>
-                        <div class="extra content">
-                            <a target="_blank" href="http://kohilanm.com/"> <i class="browser icon"></i> Website</a> <span class="right floated"><a target="_blank" href="mailto:kohilan.mohanarajan@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
-                    </div>
-                    <div class="card">
-                        <div class="image"> <img src="{{ url_for('static', filename='images/chintan.jpg') }}"> </div>
-                        <div class="content">
-                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/chintan-small.jpg') }}">
-                            <div class="header">Chintan Shah</div>
-                            <div class="meta"> <span class="position-title">Lecturer</span> </div>
-                        </div>
-                        <div class="extra content">
-                            <a target="_blank" href="https://github.com/chintans1/"> <i class="github icon"></i> GitHub </a> <span class="right floated"><a target="_blank" href="mailto:chintans.shah@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
-                    </div>
-                    <div class="card">
-                        <div class="image"> <img src="{{ url_for('static', filename='images/harsh.jpg') }}"> </div>
-                        <div class="content">
-                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/harsh-small.jpg') }}">
-                            <div class="header">Harsh Patel</div>
-                            <div class="meta"> <span class="position-title">Lecturer </span> </div>
-                            <div class="meta">Status: Work Term</div>
-                        </div>
-                        <div class="extra content">
-                            <a target="_blank" href="https://github.com/harsh6646/"> <i class="github icon"></i> GitHub </a> <span class="right floated"><a target="_blank" href="mailto:harshone.patel@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
-                    </div>
-                    <div class="card">
-                        <div class="image"> <img src="{{ url_for('static', filename='images/abhay.jpg') }}"> </div>
-                        <div class="content">
-                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/abhay-small.jpg') }}">
-                            <div class="header">Abhay Vaidya</div>
-                            <div class="meta"> <span class="position-title">Sessional Lecturer &amp; Designer</span> </div>
-                        </div>
-                        <div class="extra content">
-                            <a target="_blank" href="http://abhayvaidya.com/"> <i class="browser icon"></i> Website </a> <span class="right floated"><a target="_blank" href="mailto:abhay.vaidya@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
-                    </div>
-                    <div class="card">
-                        <div class="image"> <img src="{{ url_for('static', filename='images/kevin.jpg') }}"> </div>
-                        <div class="content">
-                            <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/kevin-small.jpg') }}">
-                            <div class="header">Kevin Shen</div>
-                            <div class="meta"> <span class="position-title">Operations &amp; Sys. Admin</span> </div>
-                        </div>
-                        <div class="extra content">
-                            <a target="_blank" href="http://kevshen.com/"> <i class="browser icon"></i> Website </a> <span class="right floated"><a target="_blank" href="mailto:kevs.shen@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
-                    </div>
+        <div class="ui four column doubling stackable grid resource-buttons" style="margin-top: 25px;">
+          {% if lectures|length
+          <=0 %} <!-- Displaying message to notify user there are no lectures/resources atm -->
+            <p class="ui header empty" style="padding-top: 10px;padding-bottom: 15px; color: #1d6392;">There are no resources available currently. Check back later!</p>
+            {% else %} {% for lecture in lectures | reverse %}
+            <div class="column">
+              <div class="ui big fluid dropdown right labeled icon button blue">
+                <div class="resource-title"> {{ lecture.title }}</div>
+                <div class="date">{{ moment(lecture.date).format('LL') }}</div> <i class="chevron circle down icon"></i>
+                <div class="menu">
+                  {% for material in materials %} {% if material.lecture_id == lecture.id %}
+                  <a class="item" href="{{ material.url }}" target="_blank"><i class="{{ material.icon }}"></i>{{ material.description }}</a> {% endif %} {% endfor %}
                 </div>
+              </div>
             </div>
+            {% endfor %} {% endif %}
         </div>
-
-        <!-- Contact Section -->
-        <div id="contact">
-            <div class="ui fluid container pushed">
-                <div class="ui stackable grid">
-                    <div class="four wide column">
-                        <h1 class="section-title">CONTACT</h1>
-                        <div class="ui list">
-                            <div class="item"> University of Toronto Scarborough
-                                <br> 1265 Military Trail
-                                <br> Toronto, ON
-                                <br> M1C 1A4 </div>
-                        </div>
-                        <div class="ui list">
-                            <div class="item">
-                                <a href="https://csec.club" target="_blank"> <i class="home icon"></i> CSEC Home Page</a>
-                            </div>
-                            <div class="item">
-                                <a href="mailto:csec@utsc.utoronto.ca" target="_blank"> <i class="mail icon"></i> Email</a>
-                            </div>
-                            <div class="item">
-                                <a href="https://github.com/CSEC-W" target="_blank"> <i class="github icon"></i> CSEC-W</a>
-                            </div>
-                            <div class="item">
-                                <a href="https://www.facebook.com/pg/CSEC.UTSC/" target="_blank"> <i class="facebook f icon"></i> CSEC</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="twelve wide column">
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
-            <script>
-                function initMap() {
-                    // Sets up and styles our map
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        center: {
-                            lat: 43.784127379117216
-                            , lng: -79.18903468410963
-                        }
-                        , zoom: 16
-                        , styles:
-                        [
-                            {
-                                "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#212121"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "elementType": "labels.icon"
-                                , "stylers": [
-                                    {
-                                        "visibility": "off"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#757575"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "elementType": "labels.text.stroke"
-                                , "stylers": [
-                                    {
-                                        "color": "#212121"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "administrative"
-                                , "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#757575"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "administrative.country"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#9e9e9e"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "administrative.locality"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#bdbdbd"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "poi"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#757575"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "poi.park"
-                                , "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#181818"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "poi.park"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#616161"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "poi.park"
-                                , "elementType": "labels.text.stroke"
-                                , "stylers": [
-                                    {
-                                        "color": "#1b1b1b"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "road"
-                                , "elementType": "geometry.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#2c2c2c"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "road"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#8a8a8a"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "road.arterial"
-                                , "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#373737"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "road.highway"
-                                , "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#3c3c3c"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "road.highway.controlled_access"
-                                , "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#4e4e4e"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "road.local"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#616161"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "transit"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#757575"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "water"
-                                , "elementType": "geometry"
-                                , "stylers": [
-                                    {
-                                        "color": "#000000"
-                              }
-                            ]
-                          }
-                                                        , {
-                                "featureType": "water"
-                                , "elementType": "labels.text.fill"
-                                , "stylers": [
-                                    {
-                                        "color": "#3d3d3d"
-                              }
-                            ]
-                          }
-                        ]
-                    });
-                    var marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(43.784127379117216, -79.18903468410963)
-                        , map: map
-                        , title: 'Hello World'
-                    });
-                }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5raoTaTtayx0Ku35S7Sk3n5II7nk0N8A&callback=initMap" async defer></script>
-        </div>
-
-        <!-- Footer Section -->
-        <div id="footer">
-            <div class="ui fluid container"> &#169; CSEC-W 2017. All Rights Reserved </div>
-        </div>
+      </div>
     </div>
+
+    <!-- Team Section -->
+    <div id="team">
+      <div class="ui fluid container pushed">
+        <h1 class="section-title">TEAM</h1>
+        <div class="ui five stackable cards team-members">
+          <div class="card">
+            <div class="image"> <img src="{{ url_for('static', filename='images/kohilan.jpg') }}"> </div>
+            <div class="content">
+              <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/kohilan-small.jpg') }}">
+              <div class="header">Kohilan Mohanarajan</div>
+              <div class="meta"> <span class="position-title">Division Leader</span> </div>
+            </div>
+            <div class="extra content">
+              <a target="_blank" href="http://kohilanm.com/"> <i class="browser icon"></i> Website</a> <span class="right floated"><a target="_blank" href="mailto:kohilan.mohanarajan@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
+          </div>
+          <div class="card">
+            <div class="image"> <img src="{{ url_for('static', filename='images/chintan.jpg') }}"> </div>
+            <div class="content">
+              <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/chintan-small.jpg') }}">
+              <div class="header">Chintan Shah</div>
+              <div class="meta"> <span class="position-title">Lecturer</span> </div>
+            </div>
+            <div class="extra content">
+              <a target="_blank" href="https://github.com/chintans1/"> <i class="github icon"></i> GitHub </a> <span class="right floated"><a target="_blank" href="mailto:chintans.shah@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
+          </div>
+          <div class="card">
+            <div class="image"> <img src="{{ url_for('static', filename='images/harsh.jpg') }}"> </div>
+            <div class="content">
+              <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/harsh-small.jpg') }}">
+              <div class="header">Harsh Patel</div>
+              <div class="meta"> <span class="position-title">Lecturer </span> </div>
+            </div>
+            <div class="extra content">
+              <a target="_blank" href="https://github.com/harsh6646/"> <i class="github icon"></i> GitHub </a> <span class="right floated"><a target="_blank" href="mailto:harshone.patel@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
+          </div>
+          <div class="card">
+            <div class="image"> <img src="{{ url_for('static', filename='images/abhay.jpg') }}"> </div>
+            <div class="content">
+              <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/abhay-small.jpg') }}">
+              <div class="header">Abhay Vaidya</div>
+              <div class="meta"> <span class="position-title">Sessional Lecturer &amp; Designer</span> </div>
+            </div>
+            <div class="extra content">
+              <a target="_blank" href="http://abhayvaidya.com/"> <i class="browser icon"></i> Website </a> <span class="right floated"><a target="_blank" href="mailto:abhay.vaidya@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
+          </div>
+          <div class="card">
+            <div class="image"> <img src="{{ url_for('static', filename='images/kevin.jpg') }}"> </div>
+            <div class="content">
+              <img class="right floated circular mini ui image" src="{{ url_for('static', filename='images/kevin-small.jpg') }}">
+              <div class="header">Kevin Shen</div>
+              <div class="meta"> <span class="position-title">Operations &amp; Sys. Admin</span> </div>
+            </div>
+            <div class="extra content">
+              <a target="_blank" href="http://kevshen.com/"> <i class="browser icon"></i> Website </a> <span class="right floated"><a target="_blank" href="mailto:kevs.shen@mail.utoronto.ca"><i class="mail icon"></i></a></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact">
+      <div class="ui fluid container pushed">
+        <div class="ui stackable grid">
+          <div class="four wide column">
+            <h1 class="section-title">CONTACT</h1>
+            <div class="ui list">
+              <div class="item"> University of Toronto Scarborough
+                <br> 1265 Military Trail
+                <br> Toronto, ON
+                <br> M1C 1A4 </div>
+            </div>
+            <div class="ui list">
+              <div class="item">
+                <a href="https://csec.club" target="_blank"> <i class="home icon"></i> CSEC Home Page</a>
+              </div>
+              <div class="item">
+                <a href="mailto:csec@utsc.utoronto.ca" target="_blank"> <i class="mail icon"></i> Email</a>
+              </div>
+              <div class="item">
+                <a href="https://github.com/CSEC-W" target="_blank"> <i class="github icon"></i> CSEC-W</a>
+              </div>
+              <div class="item">
+                <a href="https://www.facebook.com/pg/CSEC.UTSC/" target="_blank"> <i class="facebook f icon"></i> CSEC</a>
+              </div>
+            </div>
+          </div>
+          <div class="twelve wide column">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function initMap() {
+          // Sets up and styles our map
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+              lat: 43.784127379117216,
+              lng: -79.18903468410963
+            },
+            zoom: 16,
+            styles: [{
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#212121"
+              }]
+            }, {
+              "elementType": "labels.icon",
+              "stylers": [{
+                "visibility": "off"
+              }]
+            }, {
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#757575"
+              }]
+            }, {
+              "elementType": "labels.text.stroke",
+              "stylers": [{
+                "color": "#212121"
+              }]
+            }, {
+              "featureType": "administrative",
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#757575"
+              }]
+            }, {
+              "featureType": "administrative.country",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#9e9e9e"
+              }]
+            }, {
+              "featureType": "administrative.locality",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#bdbdbd"
+              }]
+            }, {
+              "featureType": "poi",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#757575"
+              }]
+            }, {
+              "featureType": "poi.park",
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#181818"
+              }]
+            }, {
+              "featureType": "poi.park",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#616161"
+              }]
+            }, {
+              "featureType": "poi.park",
+              "elementType": "labels.text.stroke",
+              "stylers": [{
+                "color": "#1b1b1b"
+              }]
+            }, {
+              "featureType": "road",
+              "elementType": "geometry.fill",
+              "stylers": [{
+                "color": "#2c2c2c"
+              }]
+            }, {
+              "featureType": "road",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#8a8a8a"
+              }]
+            }, {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#373737"
+              }]
+            }, {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#3c3c3c"
+              }]
+            }, {
+              "featureType": "road.highway.controlled_access",
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#4e4e4e"
+              }]
+            }, {
+              "featureType": "road.local",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#616161"
+              }]
+            }, {
+              "featureType": "transit",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#757575"
+              }]
+            }, {
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [{
+                "color": "#000000"
+              }]
+            }, {
+              "featureType": "water",
+              "elementType": "labels.text.fill",
+              "stylers": [{
+                "color": "#3d3d3d"
+              }]
+            }]
+          });
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(43.784127379117216, -79.18903468410963),
+            map: map,
+            title: 'Hello World'
+          });
+        }
+
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5raoTaTtayx0Ku35S7Sk3n5II7nk0N8A&callback=initMap" async defer></script>
+    </div>
+
+    <!-- Footer Section -->
+    <div id="footer">
+      <div class="ui fluid container"> &#169; CSEC-W 2018. All Rights Reserved </div>
+    </div>
+  </div>
 </body>
+
 </html>
