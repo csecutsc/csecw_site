@@ -12,3 +12,4 @@ sudo systemctl restart csec
 echo "starting nginx"
 sudo systemctl start nginx
   
+
